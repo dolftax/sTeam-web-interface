@@ -1,73 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="sTeam">
-<head>
-    <title>sTeam Collaboration platform</title>
+<html lang="en">
+  <head>
+    <title>
+      sTeam Collaboration platform
+    </title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bower_components/sweetalert/dist/sweetalert.css">
-
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-</head>
-<body>   
-    <div class="row" ng-controller="navController">
-        <nav class="navbar navbar-inverse" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" 
-         data-target="#navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="">Open sTeam Collaboration platform</a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbar">
-                    <ul class="nav navbar-nav">
-                        <li ng-hide="isLogOut();" ng-class="setClass('/home')">
-                            <a href="#/home"><span class="glyphicon glyphicon-folder-open"> Groups</span></a>
-                        </li>
-                        <li ng-show="isLogOut();" class="active">
-                            <a href="">Home</a>
-                        </li>
-                        <li ng-hide="isLogOut();" ng-class="setClass('/notifications')">
-                            <a href="#/notifications"><span class="glyphicon glyphicon-home" > Home</span></a>
-                        </li>
-                        <li ng-hide="isLogOut();" ng-class="setClass('/messages')">
-                            <a href="#/messages"><span class="glyphicon glyphicon-envelope" > Messaging</span></a>
-                        </li>
-                        <li ng-hide="isLogOut();" ng-class="setClass('/adminPanel')">
-                            <a href="#/adminPanel"><span class="glyphicon glyphicon-list-alt" > Admin Panel</span></a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li ng-hide="isLogOut();" ng-class="setClass('/editProfile')">
-                            <a href="#/editProfile"><span class="glyphicon glyphicon-user" > Edit Profile</span></a>
-                        </li>
-                        <li ng-hide="isLogOut();" ng-class="setClass('/index')">
-                            <a href="#/index" ng-click="logOut();"><span class="glyphicon glyphicon-log-in"> Log out</span></a>
-                        </li>
-                        <li ng-show="isLogOut();">
-                            <a href="" data-toggle="modal" data-target="#signUp"><span class="glyphicon glyphicon-user" ></span> Sign Up</a>
-                        </li>
-                        <li ng-show="isLogOut();">
-                            <a href=""data-toggle="modal" data-target="#signIn"><span class="glyphicon glyphicon-log-in" ></span> Log in</a>
-                        </li>
-                    </ul>
-                </div>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="#">sTeam Collaboration Platform</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ user.name }} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Account Settings</a>
+                </li>
+                <li>
+                  <a href="#">Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input class="form-control" placeholder="Search" type="text">
             </div>
-        </nav>
-    </div>
-    <div ng-view></div>
-    <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/angular-route/angular-route.min.js"></script>
-    <script src="/bower_components/angularLocalStorage/src/angularLocalStorage.js"></script>
-    <script src="sTeamCollaborationPlatformApp.js"></script>
-    <script src="steam.js"></script>
-
-
-</body>
+          </form>
+        </div>
+      </div>
+    </nav>
+    
+    <script src="bower_components/angular/angular.min.js"></script> <script src="bower_components/angular-route/angular-route.min.js"></script> <script src="bower_components/angularLocalStorage/src/angularLocalStorage.js"></script> <script src="scripts/controllers.js"></script> <script src="script/handler.js"></script>
+  </body>
 </html>

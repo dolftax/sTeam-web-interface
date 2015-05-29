@@ -1,0 +1,61 @@
+<!-- Breadcrumb, Workarea switch, options -->
+
+<div class="container pull-left">
+  <div class="row">
+    <div class="col-xs-4">
+      <ol class="breadcrumb">
+        <li>
+          <a href="active">Level 1</a>
+        </li>
+        <li>
+          <a href="#">Level 2</a>
+        </li>
+      </ol>
+    </div>
+    <div class="col-xs-4">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#">Shared workarea</a>
+        </li>
+        <li>
+          <a href="#">Private workarea</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-xs-4">
+      <div class="dropdown pull-right">
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1" type="button">Sort by <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#" tabindex="-1">Title</a>
+          </li>
+          <li>
+            <a href="#" tabindex="-1">Author</a>
+          </li>
+          <li>
+            <a href="#" tabindex="-1">Date</a>
+          </li>
+          <li>
+            <a href="#" tabindex="-1">Doc type</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- Rooms and doc containers -->
+  <div class="column">
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>
+            {{ room.name }}
+          </h3>
+          <hr>
+          <br>
+          <p>
+            {{ room.contents }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
