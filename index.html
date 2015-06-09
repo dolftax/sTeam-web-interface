@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="sTeam">
   <head>
     <title>
       sTeam Collaboration platform
@@ -11,6 +11,16 @@
 
     <script src="bower_components/jquery/dist/jquery.min.js" defer></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" defer></script>
+
+    <!-- Angular components -->
+    <script src="bower_components/angular/angular.min.js" defer></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js" defer></script>
+    <script src="bower_components/angular-route/angular-route.min.js" defer></script>
+    <script src="bower_components/angularLocalStorage/src/angularLocalStorage.js" defer></script>
+
+    <script src="controllers/main.js" defer></script>
+    <script src="services/authentication.js" defer></script>
+
   </head>
   <body>
     <!-- Navbar -->
@@ -42,6 +52,9 @@
       </div>
     </nav>
 
-    <script src="bower_components/angular/angular.min.js"></script> <script src="bower_components/angular-route/angular-route.min.js"></script> <script src="bower_components/angularLocalStorage/src/angularLocalStorage.js"></script> <script src="scripts/controllers.js"></script> <script src="script/handler.js"></script>
+    <div class="container">
+      <div ui-view></div>
+    </div>
+
   </body>
 </html>

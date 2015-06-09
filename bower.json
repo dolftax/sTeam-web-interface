@@ -6,7 +6,8 @@
     "jquery": "~2.1.4",
     "bootstrap": "~3.3.4",
     "fontawesome": "~4.3.0",
-    "angular-ui-router": "~0.2.15"
+    "angular-ui-router": "~0.2.15",
+    "angularLocalStorage": "~0.3.0"
   },
   "private": true
 }
