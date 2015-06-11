@@ -15,11 +15,10 @@
     <!-- Angular components -->
     <script src="bower_components/angular/angular.min.js" defer></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js" defer></script>
-    <script src="bower_components/angular-route/angular-route.min.js" defer></script>
     <script src="bower_components/angularLocalStorage/src/angularLocalStorage.js" defer></script>
 
     <script src="controllers/main.js" defer></script>
-    <script src="services/authentication.js" defer></script>
+    <script src="services/login.js" defer></script>
 
   </head>
   <body>
@@ -53,7 +52,8 @@
     </nav>
 
     <div class="container">
-      <div ui-view></div>
+      <div ui-view="login"></div>
+      <div ui-view="workarea"></div>
     </div>
 
   </body>
