@@ -1,12 +1,17 @@
-sTeam.run(function ($rootScope) {
+steam.controller("loginCtrl", ["$scope","steam","$location","$window",function ($scope, sTeam, $location, $window) {
 
-  $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-    var requireLogin = toState.data.requireLogin;
-
-    if (requireLogin && typeof $rootScope.currentUser === 'undefined') {
-      event.preventDefault();
-
-    }
-  });
-
-});
+$scope.logIn=function(){
+        var $btn = $("#btnSignIn");
+        $btn.button("loading");
+        sTeam.login($scope.userSignIn, $scope.signInpwd).then(function(response) {
+                $btn.button("reset");
+                $("#signIn").modal("hide");
+                $location.path("/workarea");
+                $window.location.reload();
+        }).catch(function(e){
+                $btn.button("reset");
+                $("#signIn").modal("hide");
+                alert("Wrong username or password");
+     })
+    }  
+}]);

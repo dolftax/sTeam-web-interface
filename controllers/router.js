@@ -1,8 +1,8 @@
-var sTeam = angular.module("sTeam", ["ui.router"]);
+var steam = angular.module("steam", ["ui.router"]);
 
-sTeam.config(function($stateProvider, $urlRouteProvider) {
-	$urlRouteProvider.when("", "/index");
-	$urlRouteProvider.otherwise("/index");
+steam.config(function($stateProvider, $urlRouteProvider) {
+	$urlRouteProvider.when("", "/index.login");
+	$urlRouteProvider.otherwise("/index.login");
 
 	$stateProvider
 	.state("index", {
@@ -19,6 +19,7 @@ sTeam.config(function($stateProvider, $urlRouteProvider) {
 	.state("index.workarea", {
 		templateUrl: "/templates/workarea.html",
 		controller: "workareaCtrl",
+		requireLogin: true,
 		views: {
 			"shared@index.workarea": {
 				templateUrl: "/views/list"
@@ -28,4 +29,4 @@ sTeam.config(function($stateProvider, $urlRouteProvider) {
 			}
 		}
 	})
-	});
+});
