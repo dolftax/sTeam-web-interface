@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="sTeam">
+<html lang="en" ng-app="steam">
   <head>
     <title>
       sTeam Collaboration platform
@@ -9,16 +9,19 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet">
 
-    <script src="bower_components/jquery/dist/jquery.min.js" defer></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js" defer></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Angular components -->
-    <script src="bower_components/angular/angular.min.js" defer></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js" defer></script>
-    <script src="bower_components/angularLocalStorage/src/angularLocalStorage.js" defer></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angularLocalStorage/src/angularLocalStorage.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 
-    <script src="controllers/main.js" defer></script>
-    <script src="services/login.js" defer></script>
+    <script async src="controllers/loginCtrl.js"></script>
+    <script async src="services/handler.js"></script>
+    <script async src="controllers/router.js"></script>
+    <script async src="controllers/workareaCtrl.js"></script>
 
   </head>
   <body>
@@ -52,8 +55,7 @@
     </nav>
 
     <div class="container">
-      <div ui-view="login"></div>
-      <div ui-view="workarea"></div>
+      <div ui-view></div>
   </div>
 
   </body>

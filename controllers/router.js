@@ -1,8 +1,6 @@
-var steam = angular.module("steam", ["ui.router"]);
-
-steam.config(function($stateProvider, $urlRouteProvider) {
-	$urlRouteProvider.when("", "/index.login");
-	$urlRouteProvider.otherwise("/index.login");
+steam.config(function($stateProvider, $urlRouterProvider) {
+	$urlRouterProvider.when("", "index.login");
+	$urlRouterProvider.otherwise("index.login");
 
 	$stateProvider
 	.state("index", {
@@ -13,6 +11,7 @@ steam.config(function($stateProvider, $urlRouteProvider) {
 
 	.state("index.login", {
 		templateUrl: "/templates/login.html",
+		controller: "loginCtrl",
 		requireLogin: false
 	})
 
@@ -23,7 +22,7 @@ steam.config(function($stateProvider, $urlRouteProvider) {
 		views: {
 			"shared@index.workarea": {
 				templateUrl: "/views/list"
-			}
+			},
 			":username@workarea": {
 				templateUrl: "/views/list"
 			}
