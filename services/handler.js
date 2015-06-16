@@ -1,9 +1,8 @@
 var steam = angular.module("steam", ["ui.router", "angularLocalStorage", "ngCookies"]);
 
-steam.factory("handler", ["$scope", "$http", "storage", function ( $scope, $http, storage ) {
+steam.factory("handler", ["$scope", "$http", "storage", "config", function ( $scope, $http, storage, config ) {
 
-    var baseurl = "http://dev-back1.techgrind.asia/",
-        restapi = baseurl + "scripts/rest.pike?request=";
+    var restapi = config.baseurl + "scripts/rest.pike?request=";
 
     var handle_request = function(response) {
         storage.add("user", JSON.stringify(response.data.me));
