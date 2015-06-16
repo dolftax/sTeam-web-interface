@@ -1,30 +1,50 @@
 steam.config(function($stateProvider, $urlRouterProvider) {
-	$urlRouterProvider.when("", "index.login");
-	$urlRouterProvider.otherwise("index.login");
+	$urlRouterProvider.when("", "login");
+	$urlRouterProvider.otherwise("login");
 
 	$stateProvider
-	.state("index", {
-		templateUrl: "index.html",
-		controller: "mainCtrl",
-		requireLogin: false
-	})
-
-	.state("index.login", {
+	.state("login", {
+		url: "/login",
 		templateUrl: "/templates/login.html",
 		controller: "loginCtrl",
 		requireLogin: false
 	})
 
-	.state("index.workarea", {
+	.state("workarea", {
+		url: "/workarea",
 		templateUrl: "/templates/workarea.html",
-		controller: "workareaCtrl",
+		controller: "workareaSharedCtrl",
+		requireLogin: true
+	})
+
+	.state("workarea.shared", {
+		url: "/shared",
+		templateUrl: "/templates/workarea.html",
+		controller: "workareaSharedCtrl",
+		views: {
+			"breadcrumb@workarea.shared": {
+				templateUrl: "/views/options.html"
+			},
+			"workspace@workarea.shared": {
+				templateUrl: "/views/workspace.html"
+			}
+		}
+	})
+
+	.state("workarea.user", {
+		url: "/:username",
+		templateUrl: "/templates/workarea.html",
+		controller: "workareaUserCtrl",
 		requireLogin: true,
 		views: {
-			"shared@index.workarea": {
-				templateUrl: "/views/list"
+			"breadcrumb@workarea.user": {
+				templateUrl: "/views/options.html"
 			},
-			":username@workarea": {
-				templateUrl: "/views/list"
+			"workspace@workarea.user": {
+				templateUrl: "/views/workspace.html"
+			},
+			"comments@workarea.user": {
+				templateUrl: "/views/comments.html"
 			}
 		}
 	})

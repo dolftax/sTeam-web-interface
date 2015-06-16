@@ -66,7 +66,7 @@ steam.factory("steam", ['$scope', 'storage', function ( $scope, storage ) {
     };
 }]);
 
-steam.run(["$rootScope", "$location", "steam", function ($rootScope, $location, steam ) {
+steam.run(["$rootScope", "$location", "steam", "$stateProvider", function ($rootScope, $location, steam, $stateProvider ) {
     $rootScope.$on("$stateChangeStart", function (event, next, current) {
         if (!steam.loginp()&& next.requireLogin) {
             event.preventDefault();
