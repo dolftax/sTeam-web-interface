@@ -1,4 +1,6 @@
-steam.factory("steam", ['$scope', 'storage', function ( $scope, storage ) {
+var steam = angular.module("steam", ["ui.router", "angularLocalStorage", "ngCookies"]);
+
+steam.factory("handler", ["$scope", "$http", "storage", function ( $scope, $http, storage ) {
 
     var baseurl = "http://dev-back1.techgrind.asia/",
         restapi = baseurl + "scripts/rest.pike?request=";
@@ -66,14 +68,14 @@ steam.factory("steam", ['$scope', 'storage', function ( $scope, storage ) {
     };
 }]);
 
-steam.run(["$rootScope", "$location", "steam", "$stateProvider", function ($rootScope, $location, steam, $stateProvider ) {
+steam.run(["$rootScope", "handler", "$stateProvider", function ($rootScope, handler, $stateProvider ) {
     $rootScope.$on("$stateChangeStart", function (event, next, current) {
-        if (!steam.loginp()&& next.requireLogin) {
+        if (!handler.loginp()&& next.requireLogin) {
             event.preventDefault();
-            $state.go("index.login");
-        }else if(steam.loginp()&& !next.requireLogin){
+            $state.go("login");
+        }else if(handler.loginp()&& !next.requireLogin){
          event.preventDefault();
-        $state.go("index.workarea");
+        $state.go("workarea");
         }
     });
 }]);

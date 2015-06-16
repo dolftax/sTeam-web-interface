@@ -1,21 +1,21 @@
 var steam = angular.module("steam", ["ui.router", "angularLocalStorage", "ngCookies"]);
 
-steam.controller("loginCtrl", ["$scope", "steam", "storage", "$stateProvider", function ( $scope, steam, storage, $stateProvider) {
+steam.controller("loginCtrl", ["$scope", "handler", "storage", "$stateProvider", function ( $scope, handler, storage, $stateProvider) {
 
 $scope.logIn=function(){
-        steam.login($scope.signInUsername, $scope.signInPasswd).then(function(response) {
-                $stateProvider.state.go("workarea");
+        handler.login($scope.signInUsername, $scope.signInPasswd).then(function(response) {
+                $state.go("workarea");
         }).catch(function(e){
-                $stateProvider.state.go("login");
+                $state.go("login");
      })
 };
 
 $scope.logOut=function(){
-    steam.logout();
+    handler.logout();
 };
 
 $scope.isLogOut=function(){
-    if(steam.loginp()==null||!steam.loginp()){
+    if(handler.loginp()==null||!handler.loginp()){
         return true;
     } else return false;            
 };
