@@ -1,5 +1,5 @@
 <!-- list view || room view -->
-  <div class="column">
+<div class="column">
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
         <div class="caption">
@@ -42,11 +42,11 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 
 <!-- Detailed view || Document view -->
 
-<div class="column">
+<div class="column" ng-controller="workspaceCtrl">
   <div class="col-sm-6 col-md-4">
     <h1>{{document.title}}</h1><br>
     <span ng-repeat="tag in tags">
@@ -55,8 +55,8 @@
 
     <!-- document viewer/editor -->
 
-    <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="textareaQuestion" textarea-required ng-model="yourModel.model" enable-bootstrap-title="true" textarea-menu="{{yourModel.customMenu}}">
+    <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="textareaQuestion" textarea-required ng-model="data" enable-bootstrap-title="true" textarea-menu="{{menu}}">
     </wysiwyg>
 
-  <div>
+  </div>
 </div>
