@@ -13,14 +13,16 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Angular components -->
+    <script type="text/javascript" src="app/bower_components/tinymce/tinymce.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/angularLocalStorage/src/angularLocalStorage.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 
+    <script src="controllers/router.js"></script>
+    <script src="/config.js"></script>
     <script src="services/handler.js"></script>
     <script src="controllers/loginCtrl.js"></script>
-    <script src="controllers/router.js"></script>
     <script src="controllers/workareaCtrl.js"></script>
 
   </head>
@@ -34,7 +36,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ user.name }} <span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li>
                   <a href="#">Account Settings</a>

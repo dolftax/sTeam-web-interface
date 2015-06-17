@@ -46,11 +46,17 @@
 
 <!-- Detailed view || Document view -->
 
- <div class="column">
-   <div class="col-sm-6 col-md-4">
-     <h1>{{document.title}}</h1><br>
-     <span ng-repeat="tag in tags">
-       {{tag}}
-     </span>
+<div class="column">
+  <div class="col-sm-6 col-md-4">
+    <h1>{{document.title}}</h1><br>
+    <span ng-repeat="tag in tags">
+      {{tag}}
+    </span>
+
+    <!-- document viewer/editor -->
+
+    <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="textareaQuestion" textarea-required ng-model="yourModel.model" enable-bootstrap-title="true" textarea-menu="{{yourModel.customMenu}}">
+    </wysiwyg>
+
   <div>
 </div>

@@ -1,6 +1,6 @@
-var steam = angular.module("steam", ["ui.router", "angularLocalStorage", "ngCookies"]);
+angular.module("steam")
 
-steam.factory("handler", ["$scope", "$http", "storage", "config", function ( $scope, $http, storage, config ) {
+.factory("handler", ["$http", "storage", "config", function ($http, storage, config ) {
 
     var restapi = config.baseurl + "scripts/rest.pike?request=";
 
@@ -65,16 +65,16 @@ steam.factory("handler", ["$scope", "$http", "storage", "config", function ( $sc
             return $http["delete"](restapi + request, headers()).then(handle_request);
         }
     };
-}]);
+}])
 
-steam.run(["$rootScope", "handler", "$stateProvider", function ($rootScope, handler, $stateProvider ) {
+.run(["$rootScope", "$state", "handler", function ($rootScope, $state, handler ) {
     $rootScope.$on("$stateChangeStart", function (event, next, current) {
         if (!handler.loginp()&& next.requireLogin) {
             event.preventDefault();
             $state.go("login");
         }else if(handler.loginp()&& !next.requireLogin){
-         event.preventDefault();
-        $state.go("workarea");
+            event.preventDefault();
+            $state.go("workarea");
         }
     });
 }]);

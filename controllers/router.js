@@ -1,6 +1,7 @@
-steam.config(function($stateProvider, $urlRouterProvider) {
-	$urlRouterProvider.when("", "login");
-	$urlRouterProvider.otherwise("login");
+angular.module("steam", ["ui.router", "angularLocalStorage", "ngCookies"])
+
+.config(function($stateProvider, $urlRouterProvider) {
+	$urlRouterProvider.otherwise("/login");
 
 	$stateProvider
 	.state("login", {
