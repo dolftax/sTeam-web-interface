@@ -1,7 +1,8 @@
 angular.module("steam")
 
-.controller("workspaceCtrl", function($scope) {
+.controller("workspaceCtrl", ["$scope", "video", function($scope, video) {
 
+      //Text
       $scope.data = {};
 
       $scope.menu = [
@@ -15,4 +16,7 @@ angular.module("steam")
             ['code', 'quote', 'paragragh'],
             ['link', 'image']
       ];
-});
+
+      // Video
+      video.addSource("", "");
+}]);

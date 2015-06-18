@@ -55,8 +55,19 @@
 
     <!-- document viewer/editor -->
 
+    <!-- text -->
     <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="textareaQuestion" textarea-required ng-model="data" enable-bootstrap-title="true" textarea-menu="{{menu}}">
     </wysiwyg>
 
-  </div>
+    <!-- audio -->
+
+
+    <!-- video -->
+
+    <section class="video" ng-video ng-model="videoModel">
+      <section vi-controls class="controls">
+        <span ng-click="interface.controls.play()" title="Play" class="glyphicon glyphicon-play"></span>
+        <span ng-click="interface.controls.pause()" title="Pause" class="glyphicon glyphicon-pause"></span>
+    </section>
+
 </div>

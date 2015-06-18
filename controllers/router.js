@@ -1,4 +1,4 @@
-angular.module("steam", ["ui.router", "angularLocalStorage", "ngCookies", "colorpicker.module", "wysiwyg.module"])
+angular.module("steam", ["ui.router", "angularLocalStorage", "ngCookies", "colorpicker.module", "wysiwyg.module", "ngVideo"])
 
 .config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise("/login");
