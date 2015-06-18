@@ -1,22 +1,22 @@
 angular.module("steam")
 
-.factory("handler", ["$http", "storage", "config", function ($http, storage, config ) {
+.factory("handler", ["$http", "localStorageService", "config", function ($http, localStorageService, config ) {
 
     var restapi = config.baseurl + "scripts/rest.pike?request=";
 
     var handle_request = function(response) {
-        storage.add("user", JSON.stringify(response.data.me));
+        localStorageService.set("user", JSON.stringify(response.data.me));
         return response.data;
     };
 
     var loginp = function() {
-        var logindata = JSON.parse(storage.get("logindata"));
-        var user = JSON.parse(storage.get("user"));
+        var logindata = JSON.parse(localStorageService.get("logindata"));
+        var user = JSON.parse(localStorageService.get("user"));
         return logindata && user && user.id && user.id !== "guest";
     };
 
     var headers = function(login) {
-        var logindata = JSON.parse(storage.get("logindata"));
+        var logindata = JSON.parse(localStorageService.get("logindata"));
         if (loginp() || (login && logindata)) {
             return {
                 headers: logindata
@@ -29,7 +29,7 @@ angular.module("steam")
     return {
         login: function(userid, password) {
             if (userid !== "" && password !== "") {
-                storage.add("logindata", JSON.stringify({
+                localStorageService.set("logindata", JSON.stringify({
                 Authorization: "Basic " + window.btoa(userid + ":" + password)
             }));
                 return $http.get(restapi + "login", headers(true)).then(handle_request);
@@ -37,15 +37,15 @@ angular.module("steam")
         },
 
         logout: function() {
-            storage.remove("logindata");
-            storage.remove("user");
+            localStorageService.remove("logindata");
+            localStorageService.remove("user");
             return $http.get(restapi + "login", headers()).then(handle_request);
         },
 
         loginp: loginp,
         user: function() {
             if (loginp()) {
-                return JSON.parse(storage.get("user"));
+                return JSON.parse(localStorageService.get("user"));
             }
         },
 
