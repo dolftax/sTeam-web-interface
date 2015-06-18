@@ -1,6 +1,6 @@
 angular.module("steam")
 
-.controller("workspaceCtrl", ["$scope", "video", function($scope, video) {
+.controller("workspaceCtrl", ["$scope", "ngAudio", "video", function($scope, ngAudio, video) {
 
       //Text
       $scope.data = {};
@@ -16,6 +16,15 @@ angular.module("steam")
             ['code', 'quote', 'paragragh'],
             ['link', 'image']
       ];
+
+      // Image
+      $scope.image = {
+            "src" : "",
+            "description" : ""
+      }
+
+      // Audio
+      $scope.audio = ngAudio.load("");
 
       // Video
       video.addSource("", "");

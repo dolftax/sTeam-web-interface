@@ -9,7 +9,8 @@
     "angular-ui-router": "~0.2.15",
     "angularLocalStorage": "~0.3.0",
     "angular-wysiwyg": "~1.2.2",
-    "ngvideo": "~0.4.13"
+    "ngvideo": "~0.4.13",
+    "angular-audio": "~1.6.2"
   },
   "private": true
 }
