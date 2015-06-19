@@ -1,6 +1,7 @@
 angular.module("steam", ["ui.router", "LocalStorageModule", "colorpicker.module", "wysiwyg.module", "ngAudio", "ngVideo"])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+	$locationProvider.html5Mode(true);
 	$urlRouterProvider.otherwise("/login");
 
 	$stateProvider
