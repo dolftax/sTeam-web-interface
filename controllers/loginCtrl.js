@@ -4,7 +4,7 @@ angular.module("steam")
 
 $scope.logIn=function(){
         handler.login($scope.signInUsername, $scope.signInPasswd).then(function(response) {
-                $state.go("workarea");
+                $state.go("workarea.shared");
         }).catch(function(e){
                 $state.go("login");
      });

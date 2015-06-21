@@ -80,7 +80,7 @@ angular.module("steam")
             $state.go("login");
         }else if(handler.loginp()&& !next.requireLogin){
             event.preventDefault();
-            $state.go("workarea");
+            $state.go("workarea.shared");
         }
     });
 }])
@@ -88,13 +88,14 @@ angular.module("steam")
 // Handle room || document on state change
 .run(["$rootScope", "$state", "handler", function ($rootScope, $state, handler ) {
     $rootScope.$on("$stateChangeStart", function (event, next, current) {
-        if (// handler.stateType == "list") 
-        {
-            event.preventDefault();
-            $state.go(""); // Go to list view
-        }else if(){
-            event.preventDefault();
-            $state.go(""); // Go to detailed view
-        }
+        // handler.stateType == "list"
+        // if ()
+        // {
+        //     event.preventDefault();
+        //     $state.go(""); // Go to list view
+        // }else if(){
+        //     event.preventDefault();
+        //     $state.go(""); // Go to detailed view
+        // }
     });
 }]);

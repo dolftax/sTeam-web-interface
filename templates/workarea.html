@@ -13,7 +13,7 @@
     <div class="col-xs-3 col-md-3">
       <ul class="nav nav-tabs">
         <li class="active">
-          <a ui-sref="workarea">Shared</a>
+          <a ui-sref="workarea.shared">Shared</a>
         </li>
         <li>
           <a ui-sref="workarea.user">Private</a>
@@ -21,7 +21,7 @@
       </ul>
     </div>
     <div class="col-xs-3 col-md-3">
-      <div ui-view="options"/>
+      <div ui-view="options"></div>
     </div>
     <div class="col-xs-2 col-md-2">
       <div class="dropdown pull-right">
@@ -48,6 +48,6 @@
 </div><br>
   <! -- for loading workspace -->
   <div class="container">
-  <div ui-view="workspace"/><br>
+  <div ui-view="workspace"></div><br>
   </div>
-  <div ui-view="comments"/>
+  <div ui-view="comments"></div>

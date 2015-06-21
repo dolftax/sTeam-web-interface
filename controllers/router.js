@@ -10,36 +10,42 @@ angular.module("steam", ["ui.router", "LocalStorageModule", "colorpicker.module"
 		requireLogin: false
 	})
 
-    $stateProvider.state("workarea", {
+	.state("workarea", {
 		url: "/",
 		requireLogin: true,
+		templateUrl: "/templates/workarea.html"
+	})
+	
+    .state("workarea.shared", {
+		url: "^/workarea",
+		requireLogin: true,
 		views: {
-			"": {
-				templateUrl: "/templates/workarea.html",
-				controller: "workareaSharedCtrl"
-			},
 			"options": {
-				templateUrl: "/views/options.html"
+				templateUrl: "/views/options.html",
+				controller: "optionsCtrl"
 			},
 			"workspace": {
-				templateUrl: "/views/workspace.html"
+				templateUrl: "/views/workspace.html",
+				controller: "workspaceCtrl"
 			}
 		}
 	})
 
 	.state("workarea.user", {
 		url: "^/user",
-		controller: "workareaUserCtrl",
 		requireLogin: true,
 		views: {
 			"options": {
-				templateUrl: "/views/options.html"
+				templateUrl: "/views/options.html",
+				controller: "optionsCtrl"
 			},
 			"workspace": {
-				templateUrl: "/views/workspace.html"
+				templateUrl: "/views/workspace.html",
+				controller: "workspaceCtrl"
 			},
 			"comments": {
-				templateUrl: "/views/comments.html"
+				templateUrl: "/views/comments.html",
+				controller: "commentsCtrl"
 			}
 		}
 	})
