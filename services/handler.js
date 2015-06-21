@@ -15,6 +15,11 @@ angular.module("steam")
         return logindata && user && user.id && user.id !== "guest";
     };
 
+    var stateType = function () {
+        // Return list if the currentstate is list of rooms
+        // Return detailed if the current state is a document
+    }
+
     var headers = function(login) {
         var logindata = JSON.parse(localStorageService.get("logindata"));
         if (loginp() || (login && logindata)) {
@@ -67,6 +72,7 @@ angular.module("steam")
     };
 }])
 
+// Handle authentication on state change
 .run(["$rootScope", "$state", "handler", function ($rootScope, $state, handler ) {
     $rootScope.$on("$stateChangeStart", function (event, next, current) {
         if (!handler.loginp()&& next.requireLogin) {
@@ -75,6 +81,19 @@ angular.module("steam")
         }else if(handler.loginp()&& !next.requireLogin){
             event.preventDefault();
             $state.go("workarea");
+        }
+    });
+}]);
+
+// Handle room || document on state change
+.run(["$rootScope", "$state", "handler", function ($rootScope, $state, handler ) {
+    $rootScope.$on("$stateChangeStart", function (event, next, current) {
+        if (// handler.stateType == "list") {
+            event.preventDefault();
+            $state.go(""); // Go to list view
+        }else if(){
+            event.preventDefault();
+            $state.go(""); // Go to detailed view
         }
     });
 }]);

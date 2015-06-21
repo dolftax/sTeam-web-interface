@@ -1,4 +1,5 @@
 <!-- list view || room view -->
+<div ng-controller="workspaceCtrl">
 <div class="column">
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
@@ -46,12 +47,12 @@
 
 <!-- Detailed view || Document view -->
 
-<div class="column" ng-controller="workspaceCtrl">
+<div class="column">
   <div class="col-sm-6 col-md-4">
     <h1>{{document.title}}</h1><br>
-    <span ng-repeat="tag in tags">
+    <!-- <span ng-repeat="tag in tags">
       {{tag}}
-    </span>
+    </span> -->
 
     <!-- document viewer/editor -->
 
@@ -77,6 +78,8 @@
       <section vi-controls class="controls">
         <span ng-click="interface.controls.play()" title="Play" class="glyphicon glyphicon-play"></span>
         <span ng-click="interface.controls.pause()" title="Pause" class="glyphicon glyphicon-pause"></span>
+      </section>
     </section>
-
+  </div>
+</div>
 </div>

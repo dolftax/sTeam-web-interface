@@ -1,53 +1,51 @@
 angular.module("steam", ["ui.router", "LocalStorageModule", "colorpicker.module", "wysiwyg.module", "ngAudio", "ngVideo"])
 
-.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
-	$urlRouterProvider.otherwise("/login");
 
-	$stateProvider
-	.state("login", {
+	$stateProvider.state("login", {
 		url: "/login",
 		templateUrl: "/templates/login.html",
 		controller: "loginCtrl",
 		requireLogin: false
 	})
 
-	.state("workarea", {
-		url: "/workarea",
+	$stateProvider.state("workarea", {
+		url: "/",
 		templateUrl: "/templates/workarea.html",
-		controller: "workareaSharedCtrl",
 		requireLogin: true
 	})
 
-	.state("workarea.shared", {
-		url: "/shared",
-		templateUrl: "/templates/workarea.html",
+    $stateProvider.state("workarea.shared", {
+		url: "^/workarea",
 		controller: "workareaSharedCtrl",
+		requireLogin: true,
 		views: {
-			"breadcrumb@workarea.shared": {
+			"options": {
 				templateUrl: "/views/options.html"
 			},
-			"workspace@workarea.shared": {
+			"workspace": {
 				templateUrl: "/views/workspace.html"
 			}
 		}
 	})
 
 	.state("workarea.user", {
-		url: "/:username",
-		templateUrl: "/templates/workarea.html",
+		url: "^/user",
 		controller: "workareaUserCtrl",
 		requireLogin: true,
 		views: {
-			"breadcrumb@workarea.user": {
+			"options": {
 				templateUrl: "/views/options.html"
 			},
-			"workspace@workarea.user": {
+			"workspace": {
 				templateUrl: "/views/workspace.html"
 			},
-			"comments@workarea.user": {
+			"comments": {
 				templateUrl: "/views/comments.html"
 			}
 		}
 	})
+
+	// $urlRouterProvider.otherwise("/login");
 });

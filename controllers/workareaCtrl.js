@@ -1,5 +1,13 @@
 angular.module("steam")
 
+.controller("workareaSharedCtrl", ["$scope", function ($scope) {
+
+}])
+
+.controller("workareaUserCtrl", ["$scope", function ($scope) {
+
+}])
+
 .controller("workspaceCtrl", ["$scope", "ngAudio", "video", function($scope, ngAudio, video) {
 
       //Text

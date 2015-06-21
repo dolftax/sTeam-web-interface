@@ -39,7 +39,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown">{{username}}<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li>
                   <a href="#">Account Settings</a>
@@ -59,9 +59,7 @@
       </div>
     </nav>
 
-    <div class="container">
-      <div ui-view></div>
-  </div>
+      <ui-view></ui-view>
 
   </body>
 </html>

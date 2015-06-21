@@ -7,7 +7,7 @@ $scope.logIn=function(){
                 $state.go("workarea");
         }).catch(function(e){
                 $state.go("login");
-     })
+     });
 };
 
 $scope.logOut=function(){
