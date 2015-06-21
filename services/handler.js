@@ -83,12 +83,13 @@ angular.module("steam")
             $state.go("workarea");
         }
     });
-}]);
+}])
 
 // Handle room || document on state change
 .run(["$rootScope", "$state", "handler", function ($rootScope, $state, handler ) {
     $rootScope.$on("$stateChangeStart", function (event, next, current) {
-        if (// handler.stateType == "list") {
+        if (// handler.stateType == "list") 
+        {
             event.preventDefault();
             $state.go(""); // Go to list view
         }else if(){
