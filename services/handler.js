@@ -99,4 +99,12 @@ angular.module("steam")
         //     $state.go(""); // Go to detailed view
         // }
     });
+}])
+
+// Auto activating Private state by default
+.run(["$rootScope", "$state", function ($rootScope, $state) {
+    $rootScope.$on("$stateChangeSuccess", function(event, toState, toParams, fromState, fromParams){
+    if(toState && toState.params && toState.params.autoActivateChild){
+        $state.go(toState.params.autoActivateChild);
+    }});
 }]);

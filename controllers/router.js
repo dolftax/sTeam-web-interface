@@ -13,7 +13,10 @@ angular.module("steam", ["ui.router", "LocalStorageModule", "colorpicker.module"
 	.state("workarea", {
 		url: "/",
 		requireLogin: true,
-		templateUrl: "/templates/workarea.html"
+		templateUrl: "/templates/workarea.html",
+		params: {
+			autoActivateChild: "workarea.user"
+    }
 	})
 
     .state("workarea.groups", {
