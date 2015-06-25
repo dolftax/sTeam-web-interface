@@ -93,6 +93,7 @@ angular.module("steam")
         // {
         //     event.preventDefault();
         //     $state.go(""); // Go to list view
+        //     // change the location URL
         // }else if(){
         //     event.preventDefault();
         //     $state.go(""); // Go to detailed view

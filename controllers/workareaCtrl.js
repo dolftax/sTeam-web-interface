@@ -1,14 +1,14 @@
 angular.module("steam")
 
-.controller("workareaSharedCtrl", ["$scope", function ($scope) {
+.controller("roomCtrl", ["$scope", "handler", function($scope, handler){
+      handler.get("/home").then(function(response) {
 
-}])
+            $scope.data = response;
+            console.log(response);
+      })
+}]);
 
-.controller("workareaUserCtrl", ["$scope", function ($scope) {
-
-}])
-
-.controller("workspaceCtrl", ["$scope", "ngAudio", "video", function($scope, ngAudio, video) {
+.controller("docCtrl", ["$scope", "ngAudio", "video", function($scope, ngAudio, video) {
 
       //Text
       $scope.data = {};
@@ -37,3 +37,13 @@ angular.module("steam")
       // Video
       video.addSource("", "");
 }]);
+
+.controller("optionsCtrl", ["$scope", function ($scope) {
+
+}])
+
+.controller("commentsCtrl", ["$scope", function ($scope) {
+
+}])
+
+*/

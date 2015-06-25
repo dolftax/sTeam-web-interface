@@ -13,7 +13,7 @@
     <div class="col-xs-3 col-md-3">
       <ul class="nav nav-tabs">
         <li class="active">
-          <a ui-sref="workarea.shared">Shared</a>
+          <a id="groups" ui-sref="workarea.groups">Groups</a>
         </li>
         <li>
           <a ui-sref="workarea.user">Private</a>
@@ -47,7 +47,10 @@
   </div>
 </div><br>
   <! -- for loading workspace -->
-  <div class="container">
-  <div ui-view="workspace"></div><br>
-  </div>
-  <div ui-view="comments"></div>
+<div class="container">
+
+    <div ui-view="groupsList"></div> 
+    <div ui-view="workspace"></div><br>
+    <div ui-view="comments"></div>
+  
+</div>  

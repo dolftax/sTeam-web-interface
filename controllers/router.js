@@ -1,6 +1,6 @@
 angular.module("steam", ["ui.router", "LocalStorageModule", "colorpicker.module", "wysiwyg.module", "ngAudio", "ngVideo"])
 
-.config(function($urlRouterProvider, $stateProvider, $locationProvider) {
+.config(function($locationProvider, $stateProvider, $urlRouterProvider) {
 	$locationProvider.html5Mode(true);
 
 	$stateProvider.state("login", {
@@ -15,18 +15,18 @@ angular.module("steam", ["ui.router", "LocalStorageModule", "colorpicker.module"
 		requireLogin: true,
 		templateUrl: "/templates/workarea.html"
 	})
-	
-    .state("workarea.shared", {
-		url: "^/workarea",
+
+    .state("workarea.groups", {
+		url: "^/groups",
 		requireLogin: true,
 		views: {
 			"options": {
 				templateUrl: "/views/options.html",
 				controller: "optionsCtrl"
 			},
-			"workspace": {
-				templateUrl: "/views/workspace.html",
-				controller: "workspaceCtrl"
+			"groupsList": {
+				templateUrl: "/views/groupsList.html",
+				controller: "groupsListCtrl"
 			}
 		}
 	})
@@ -48,9 +48,12 @@ angular.module("steam", ["ui.router", "LocalStorageModule", "colorpicker.module"
 				controller: "commentsCtrl"
 			}
 		}
-	})
+	});
 
 	// Handle when routes here. In case of accesing a room directly, post login,
 	// map the request URL and redirect to /path_to_room 
-	// $urlRouterProvider.otherwise("/login");
+	$urlRouterProvider
+	.when("/user", "/workarea/user")
+	.when("", "/")
+	.otherwise("/login");
 });

@@ -1,71 +1,16 @@
 <!-- list view || room view -->
-<div ng-controller="workspaceCtrl">
+<div ng-controller="roomCtrl">
 <div class="column">
     <div class="col-sm-4 col-md-3">
       <div class="thumbnail">
         <div class="caption">
           <h3>
-            {{ room.name }}
+            {{ data.object.name }}
           </h3>
           <hr>
           <br>
           <p>
-            {{ room.contents }}
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-md-3">
-      <div class="thumbnail">
-        <div class="caption">
-          <h3>
-            {{ document.name }}
-          </h3>
-          <hr>
-          <br>
-          <p>
-            {{ document.contents }}
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-md-3">
-      <div class="thumbnail">
-        <div class="caption">
-          <h3>
-            {{ container.name }}
-          </h3>
-          <hr>
-          <br>
-          <p>
-            {{ container.contents }}
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-md-3">
-      <div class="thumbnail">
-        <div class="caption">
-          <h3>
-            {{ container.name }}
-          </h3>
-          <hr>
-          <br>
-          <p>
-            {{ container.contents }}
-          </p>
-        </div>
-      </div>
-    </div><div class="col-sm-4 col-md-3">
-      <div class="thumbnail">
-        <div class="caption">
-          <h3>
-            {{ container.name }}
-          </h3>
-          <hr>
-          <br>
-          <p>
-            {{ container.contents }}
+            {{ data.object.content }}
           </p>
         </div>
       </div>
@@ -74,28 +19,18 @@
 
 <!-- Detailed view || Document view -->
 
-<!-- 
-<div class="column">
+<div class="column docCtrl">
   <div class="col-sm-6 col-md-4">
     <h1>{{document.title}}</h1><br>
     <span ng-repeat="tag in tags">
       {{tag}}
     </span>
--->
 
-    <!-- document viewer/editor -->
-
-    <!-- text -->
-<!--
     <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="textareaQuestion" textarea-required ng-model="data" enable-bootstrap-title="true" textarea-menu="{{menu}}">
     </wysiwyg>
--->
-    <!-- image -->
-<!--
+
     <img ng-src="" alt="" />
--->
-    <!-- audio -->
-<!--
+
     <button ng-click='audio.paused ? audio.play() : audio.pause()'>Pause</button>
     <button ng-click='audio.restart()'>Stop</button>
     <button ng-click='audio.muting = !audio.muting'>Mute</button>
@@ -104,9 +39,7 @@
     <input class='form-control' type=text ng-model='audio.currentTime'>
     <label>Volume</label>
     <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.volume'>
--->
-    <!-- video -->
-<!--
+
     <section class="video" ng-video ng-model="videoModel">
       <section vi-controls class="controls">
         <span ng-click="interface.controls.play()" title="Play" class="glyphicon glyphicon-play"></span>
@@ -115,5 +48,4 @@
     </section>
   </div>
 </div>
--->
 </div>
