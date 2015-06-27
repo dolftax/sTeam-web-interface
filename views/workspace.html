@@ -23,12 +23,8 @@
 <div class="column">
   <div class="col-sm-6 col-md-4">
     <h1>{{document.title}}</h1><br>
-    <span ng-repeat="tag in tags">
-      {{tag}}
-    </span>
 
-    <wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="80px" textarea-name="textareaQuestion" textarea-required ng-model="data" enable-bootstrap-title="true" textarea-menu={{menu}}>
-    </wysiwyg>
+    <div text-angular ng-model="textData"></div>
 
     <img ng-src="" alt="" />
 
