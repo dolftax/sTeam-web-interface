@@ -10,18 +10,10 @@ Web interface for sTeam - https://github.com/eMBee/sTeam/tree/steam-2.9-source
 yum install npm
 ```
 
-- Install the dependencies
+- Install dependencies and start the server
 
 ```
-npm install -g bower
-npm install -g http-server
-bower install
-```
-
-- Start the server
-
-```
-http-server
+npm install && npm start
 ```
 
 ## Contributing

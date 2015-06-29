@@ -1,0 +1,26 @@
+{
+  "name": "sTeam-web-interface",
+  "version": "0.1.0",
+  "description": "Web interface for Steam Collaboration platform",
+  "main": "app.js",
+  "dependencies": {
+    "bower": "~1.4.1",
+    "connect": "~3.4.0",
+    "statik": "~1.2.5",
+    "util": "~0.10.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "postinstall": "node_modules/bower/bin/bower install -F",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dolftax/sTeam-web-interface.git"
+  },
+  "author": "",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/dolftax/sTeam-web-interface/issues"
+  }
+}
