@@ -29,7 +29,7 @@ angular.module("steam", ["ui.router", "LocalStorageModule", "textAngular", "ngAu
 			},
 			"groupsList": {
 				templateUrl: "/views/groupsList.html",
-				controller: "grouplistCtrl"
+				controller: "groupsListCtrl"
 			}
 		}
 	})
