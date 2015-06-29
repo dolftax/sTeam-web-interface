@@ -35,7 +35,7 @@ angular.module("steam", ["ui.router", "LocalStorageModule", "textAngular", "ngAu
 	})
 
 	.state("workarea.user", {
-		url: "^/user",
+		url: "^/workarea",
 		requireLogin: true,
 		views: {
 			"options": {

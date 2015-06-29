@@ -4,8 +4,9 @@ angular.module("steam")
 
 }])
 
-.controller("workspaceCtrl", ["$scope", "handler", "ngAudio", "video", function($scope, handler, ngAudio, video){
-      handler.get("/home/dolftax").then(function(response) {
+.controller("workspaceCtrl", ["$rootScope", "$scope", "handler", "ngAudio", "video", function($rootScope, $scope, handler, ngAudio, video){
+      $rootScope.user = handler.user().id;
+      handler.get("/home/" + $rootScope.user).then(function(response) {
 
       $scope.data = response;
 
