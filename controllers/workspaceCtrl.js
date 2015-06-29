@@ -5,9 +5,11 @@ angular.module("steam")
 }])
 
 .controller("workspaceCtrl", ["$scope", "handler", "ngAudio", "video", function($scope, handler, ngAudio, video){
-      handler.get("/home").then(function(response) {
+      handler.get("/home/dolftax").then(function(response) {
 
       $scope.data = response;
+
+      $scope.items = $scope.data.inventory;
 
       // Image
       $scope.image = {
