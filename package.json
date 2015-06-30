@@ -5,12 +5,11 @@
   "main": "app.js",
   "dependencies": {
     "bower": "~1.4.1",
-    "connect": "~3.4.0",
-    "statik": "~1.2.5",
-    "util": "~0.10.3"
+    "node-static": "~0.7.6"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node app.js",
     "postinstall": "node_modules/bower/bin/bower install -F",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +17,6 @@
     "type": "git",
     "url": "git://github.com/dolftax/sTeam-web-interface.git"
   },
-  "author": "",
   "license": "GPL",
   "bugs": {
     "url": "https://github.com/dolftax/sTeam-web-interface/issues"
