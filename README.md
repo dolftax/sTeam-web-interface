@@ -7,7 +7,7 @@ Web interface for sTeam - https://github.com/eMBee/sTeam/tree/steam-2.9-source
 - Install npm
 
 ```
-yum install npm
+dnf install npm
 ```
 
 - Install dependencies and start the server
