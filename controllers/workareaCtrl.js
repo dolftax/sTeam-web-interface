@@ -9,9 +9,22 @@ angular.module("steam")
 			controller: "createdocCtrl"
 		})
 	};
+
+	$scope.createroom = function () {
+
+		$modal.open({
+			templateUrl: "views/createroom.html",
+			controller: "createroomCtrl"
+		})
+	};
+
 }])
 
 .controller("createdocCtrl", ["$scope", function ($scope){
+	
+}])
+
+.controller("createroomCtrl", ["$scope", function ($scope){
 	
 }])
 
