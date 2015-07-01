@@ -11,14 +11,10 @@
       </ol>
     </div>
     <div class="col-xs-3 col-md-3">
-      <ul class="nav nav-tabs">
-        <li>
-          <a ui-sref="workarea.groups">Groups</a>
-        </li>
-        <li class="active">
-          <a ui-sref="workarea.user">Private</a>
-        </li>
-      </ul>
+      <tabset justified="true">
+        <tab heading="Private" ui-sref="workarea.user"></tab>
+        <tab heading="Groups" ui-sref="workarea.groups"></tab>
+      </tabset>
     </div>
     <div class="col-xs-3 col-md-3">
       <div ui-view="options"></div>
