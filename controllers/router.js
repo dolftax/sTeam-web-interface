@@ -1,4 +1,4 @@
-angular.module("steam", ["ui.router", "LocalStorageModule", "textAngular", "ngAudio", "ngVideo"])
+angular.module("steam", ["ui.router", "ui.bootstrap", "LocalStorageModule", "textAngular", "ngAudio", "ngVideo"])
 
 .config(function($locationProvider, $stateProvider, $urlRouterProvider) {
 	$locationProvider.html5Mode(true);
