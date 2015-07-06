@@ -20,7 +20,7 @@ angular.module("steam", ["ui.router", "ui.bootstrap", "LocalStorageModule", "tex
 	})
 
     .state("workarea.groups", {
-		url: "^/groups",
+		url: "^/groups/path",
 		requireLogin: true,
 		views: {
 			"options": {
@@ -35,16 +35,20 @@ angular.module("steam", ["ui.router", "ui.bootstrap", "LocalStorageModule", "tex
 	})
 
 	.state("workarea.user", {
-		url: "^/workarea",
+		url: "^/workarea/?path",
 		requireLogin: true,
 		views: {
 			"options": {
 				templateUrl: "/views/options.html",
 				controller: "optionsCtrl"
 			},
-			"workspace": {
-				templateUrl: "/views/workspace.html",
-				controller: "workspaceCtrl"
+			"workspaceList": {
+				templateUrl: "/views/workspaceList.html",
+				controller: "workspaceListCtrl"
+			},
+			"workspaceDetailed": {
+				templateUrl: "/views/workspaceDetailed.html",
+				controller: "workspaceDetailedCtrl"
 			},
 			"comments": {
 				templateUrl: "/views/comments.html",

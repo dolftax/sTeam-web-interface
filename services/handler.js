@@ -4,23 +4,22 @@ angular.module("steam")
 
     var restapi = config.baseurl + "scripts/rest.pike?request=";
 
-    var handle_request = function(response) {
+    var handle_request = function (response) {
         localStorageService.set("user", JSON.stringify(response.data.me));
         return response.data;
     };
 
-    var loginp = function() {
+    var loginp = function () {
         var logindata = JSON.parse(localStorageService.get("logindata"));
         var user = JSON.parse(localStorageService.get("user"));
         return logindata && user && user.id && user.id !== "guest";
     };
 
-    var stateType = function () {
-        // Return list if the currentstate is list of rooms
-        // Return detailed if the current state is a document
-    }
+    var stateHandler = function (stateType) {
+        
+    };
 
-    var headers = function(login) {
+    var headers = function (login) {
         var logindata = JSON.parse(localStorageService.get("logindata"));
         if (loginp() || (login && logindata)) {
             return {
@@ -32,7 +31,7 @@ angular.module("steam")
     };
 
     return {
-        login: function(userid, password) {
+        login: function (userid, password) {
             if (userid !== "" && password !== "") {
                 localStorageService.set("logindata", JSON.stringify({
                 Authorization: "Basic " + window.btoa(userid + ":" + password)
@@ -41,32 +40,32 @@ angular.module("steam")
             }
         },
 
-        logout: function() {
+        logout: function () {
             localStorageService.remove("logindata");
             localStorageService.remove("user");
             return $http.get(restapi + "login", headers()).then(handle_request);
         },
 
         loginp: loginp,
-        user: function() {
+        user: function () {
             if (loginp()) {
                 return JSON.parse(localStorageService.get("user"));
             }
         },
 
-        get: function(request) {
+        get: function (request) {
             return $http.get(restapi + request, headers()).then(handle_request);
         },
 
-        post: function(request, data) {
+        post: function (request, data) {
             return $http.post(restapi + request, data, headers()).then(handle_request);
         },
 
-        put: function(request, data) {
+        put: function (request, data) {
             return $http.put(restapi + request, data, headers()).then(handle_request);
         },
 
-        delete: function(request) {
+        delete: function (request) {
             return $http["delete"](restapi + request, headers()).then(handle_request);
         }
     };
