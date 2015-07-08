@@ -20,7 +20,7 @@ angular.module("steam", ["ui.router", "ui.bootstrap", "LocalStorageModule", "tex
 	})
 
     .state("workarea.groups", {
-		url: "^/groups/path",
+		url: "^/groups/:path",
 		requireLogin: true,
 		views: {
 			"options": {
@@ -35,7 +35,7 @@ angular.module("steam", ["ui.router", "ui.bootstrap", "LocalStorageModule", "tex
 	})
 
 	.state("workarea.user", {
-		url: "^/workarea/?path",
+		url: "^/workarea/:path",
 		requireLogin: true,
 		views: {
 			"options": {
