@@ -1,5 +1,9 @@
 angular.module("steam")
 
+.controller("workareaGeneric", ["$state", function($state){
+	
+}])
+
 .controller("optionsCtrl", ["$scope", "$modal", function ($scope, $modal) {
 
 	$scope.createdoc = function () {
