@@ -15,7 +15,7 @@ angular.module("steam", ["ui.router", "ui.bootstrap", "LocalStorageModule", "tex
 		requireLogin: true,
 		templateUrl: "/templates/workarea.html",
 		params: {
-			autoActivateChild: "workarea.user"
+			autoActivateChild: "workarea.list"
     }
 	})
 
@@ -34,7 +34,7 @@ angular.module("steam", ["ui.router", "ui.bootstrap", "LocalStorageModule", "tex
 		}
 	})
 
-	.state("workarea.user", {
+	.state("workarea.list", {
 		url: "^/workarea/:path",
 		requireLogin: true,
 		views: {
@@ -45,6 +45,21 @@ angular.module("steam", ["ui.router", "ui.bootstrap", "LocalStorageModule", "tex
 			"workspaceList": {
 				templateUrl: "/views/workspaceList.html",
 				controller: "workspaceListCtrl"
+			},
+			"comments": {
+				templateUrl: "/views/comments.html",
+				controller: "commentsCtrl"
+			}
+		}
+	})
+
+	.state("workarea.detailed", {
+		url: "^/workarea/:path",
+		requireLogin: true,
+		views: {
+			"options": {
+				templateUrl: "/views/options.html",
+				controller: "optionsCtrl"
 			},
 			"workspaceDetailed": {
 				templateUrl: "/views/workspaceDetailed.html",
@@ -60,7 +75,6 @@ angular.module("steam", ["ui.router", "ui.bootstrap", "LocalStorageModule", "tex
 	// Handle when routes here. In case of accesing a room directly, post login,
 	// map the request URL and redirect to /path_to_room 
 	$urlRouterProvider
-	.when("/user", "/workarea/user")
 	.when("", "/")
 	.otherwise("/login");
 });

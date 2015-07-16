@@ -1,8 +1,5 @@
 angular.module("steam")
 
-.controller("workspaceGeneric", ["$rootScope, $scope, handler", function($rootScope, $scope, handler){
-}])
-
 .controller("workspaceListCtrl", ["$rootScope", "$scope", "handler", "ngAudio", "video", function($rootScope, $scope, handler, ngAudio, video){
     $rootScope.user = handler.user().id;
     handler.get("/home/" + $rootScope.user).then(function(response) {

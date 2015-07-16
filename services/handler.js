@@ -10,13 +10,15 @@ angular.module("steam")
     };
 
     var loginp = function () {
-        var logindata = JSON.parse(localStorageService.get("logindata"));
-        var user = JSON.parse(localStorageService.get("user"));
+        var logindata = JSON.parse(localStorageService.get("logindata")),
+            user = JSON.parse(localStorageService.get("user"));
         return logindata && user && user.id && user.id !== "guest";
     };
 
-    var stateHandler = function (stateType) {
-        
+    var stateHandler = function (classType, path, mimeType) {
+        if (classType == "Room") {
+            $state.go("")
+        };
     };
 
     var headers = function (login) {
@@ -79,7 +81,7 @@ angular.module("steam")
             $state.go("login");
         }else if(handler.loginp()&& !next.requireLogin){
             event.preventDefault();
-            $state.go("workarea.shared");
+            $state.go("workarea.list");
         }
     });
 }])

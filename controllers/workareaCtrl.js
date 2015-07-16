@@ -1,9 +1,5 @@
 angular.module("steam")
 
-.controller("workareaGeneric", ["$state", function($state){
-	
-}])
-
 .controller("optionsCtrl", ["$scope", "$modal", function ($scope, $modal) {
 
 	$scope.createdoc = function () {
@@ -24,14 +20,14 @@ angular.module("steam")
 
 }])
 
-.controller("createdocCtrl", ["$scope", function ($scope){
-	
-}])
-
-.controller("createroomCtrl", ["$scope", function ($scope){
-	
-}])
-
 .controller("commentsCtrl", ["$scope", function ($scope) {
 
+}])
+
+.controller("createDocCtrl", ["$scope", function ($scope){
+	
+}])
+
+.controller("createRoomCtrl", ["$scope", function ($scope){
+	
 }]);

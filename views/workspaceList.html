@@ -1,5 +1,5 @@
-<div class="column" ng-controller="workspaceGeneric">
-  <div class="col-sm-4 col-md-3" ng-repeat="item in items" ng-click="state(item.class, item.path, item.mime_type)">
+<div class="column" ng-controller="workspaceListCtrl">
+  <div class="col-sm-4 col-md-3" ng-repeat="item in items" ng-click="handler.stateHandler(item.class, item.path, item.mime_type)">
     <div class="thumbnail">
       <div class="caption">
         <h3>
