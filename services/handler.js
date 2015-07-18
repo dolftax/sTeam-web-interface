@@ -17,7 +17,10 @@ angular.module("steam")
 
     var stateHandler = function (classType, path, mimeType) {
         if (classType == "Room") {
-            $state.go("")
+            $state.go("workarea.list", { path: path});
+        }
+        else if(classType == "Document") {
+            $state.go("workarea.detailed", { path: path});
         };
     };
 
