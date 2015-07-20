@@ -15,12 +15,13 @@ angular.module("steam")
         return logindata && user && user.id && user.id !== "guest";
     };
 
-    var stateHandler = function (classType, path, mimeType) {
+    var stateHandler = function (classType, objPath, objMimeType) {
         if (classType == "Room") {
-            $state.go("workarea.list", { path: path});
+            $state.go("workarea.list", { path: objPath });
         }
         else if(classType == "Document") {
-            $state.go("workarea.detailed", { path: path});
+            $rootScope.currentMimeType = mimeType;
+            $state.go("workarea.detailed", { path: path, mimeType: objMimeType });
         };
     };
 
