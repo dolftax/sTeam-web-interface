@@ -1,6 +1,7 @@
 angular.module("steam")
 
-.factory("handler", ["$http", "localStorageService", "config", function ($http, localStorageService, config ) {
+.factory("handler", ["$http", "localStorageService", "config", "$state", "$rootScope",
+    function ($http, localStorageService, config, $state, $rootScope) {
 
     var restapi = config.baseurl + "scripts/rest.pike?request=";
 
@@ -17,10 +18,12 @@ angular.module("steam")
 
     var stateHandler = function (classType, objPath, objMimeType) {
         if (classType == "Room") {
+            $rootScope.currentPath = objPath;
             $state.go("workarea.list", { path: objPath });
         }
         else if(classType == "Document") {
-            $rootScope.currentMimeType = mimeType;
+            $rootScope.currentPath = objPath;
+            $rootScope.currentMimeType = objMimeType;
             $state.go("workarea.detailed", { path: path, mimeType: objMimeType });
         };
     };
