@@ -1,8 +1,9 @@
 angular.module("steam")
 
-.controller("workspaceListCtrl", ["$rootScope", "$scope", "handler", "ngAudio", "video", function($rootScope, $scope, handler, ngAudio, video){
+.controller("workspaceListCtrl", ["$rootScope", "$scope", "handler", function($rootScope, $scope, handler){
     $rootScope.user = handler.user().id;
-    handler.get("/home/" + $rootScope.user).then(function(response) {
+    $scope.path = $rootScope.currentObjPath || "/home/";
+    handler.get($scope.path + $rootScope.user).then(function(response) {
         $scope.data = response;
         $scope.items = $scope.data.inventory;
     });
@@ -10,10 +11,9 @@ angular.module("steam")
 
 .controller("workspaceDetailedCtrl", ["$rootScope", "$scope", "handler", "ngAudio", "video", function($rootScope, $scope, handler, ngAudio, video){
       $rootScope.user = handler.user().id;
-      handler.get("/home/" + $rootScope.user).then(function(response) {
+      handler.get($rootScope.currentObjPath + $rootScope.user).then(function(response) {
 
       $scope.data = response;
-
       $scope.items = $scope.data.inventory;
 
       // Image
