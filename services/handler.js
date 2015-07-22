@@ -3,7 +3,7 @@ angular.module("steam")
 .factory("handler", ["$http", "localStorageService", "config", "$state", "$rootScope",
     function ($http, localStorageService, config, $state, $rootScope) {
 
-    var restapi = config.baseurl + "scripts/rest.pike?request=";
+    $rootScope.restapi = config.baseurl + "scripts/rest.pike?request=";
 
     var handle_request = function (response) {
         localStorageService.set("user", JSON.stringify(response.data.me));
@@ -18,13 +18,13 @@ angular.module("steam")
 
     var stateHandler = function (classType, objPath, objMimeType) {
         if (classType == "Room") {
-            $rootScope.currentPath = objPath;
+            $rootScope.currentObjPath = objPath;
             $state.go("workarea.list", { path: objPath });
         }
         else if(classType == "Document") {
-            $rootScope.currentPath = objPath;
-            $rootScope.currentMimeType = objMimeType;
-            $state.go("workarea.detailed", { path: path, mimeType: objMimeType });
+            $rootScope.currentObjPath = objPath;
+            $rootScope.currentObjMimeType = objMimeType;
+            $state.go("workarea.detailed", { path: objPath, mimeType: objMimeType });
         };
     };
 
@@ -45,14 +45,14 @@ angular.module("steam")
                 localStorageService.set("logindata", JSON.stringify({
                 Authorization: "Basic " + window.btoa(userid + ":" + password)
             }));
-                return $http.get(restapi + "login", headers(true)).then(handle_request);
+                return $http.get($rootScope.restapi + "login", headers(true)).then(handle_request);
             }
         },
 
         logout: function () {
             localStorageService.remove("logindata");
             localStorageService.remove("user");
-            return $http.get(restapi + "login", headers()).then(handle_request);
+            return $http.get($rootScope.restapi + "login", headers()).then(handle_request);
         },
 
         loginp: loginp,
@@ -63,19 +63,19 @@ angular.module("steam")
         },
 
         get: function (request) {
-            return $http.get(restapi + request, headers()).then(handle_request);
+            return $http.get($rootScope.restapi + request, headers()).then(handle_request);
         },
 
         post: function (request, data) {
-            return $http.post(restapi + request, data, headers()).then(handle_request);
+            return $http.post($rootScope.restapi + request, data, headers()).then(handle_request);
         },
 
         put: function (request, data) {
-            return $http.put(restapi + request, data, headers()).then(handle_request);
+            return $http.put($rootScope.restapi + request, data, headers()).then(handle_request);
         },
 
         delete: function (request) {
-            return $http["delete"](restapi + request, headers()).then(handle_request);
+            return $http["delete"]($rootScope.restapi + request, headers()).then(handle_request);
         }
     };
 }])
