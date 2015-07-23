@@ -1,7 +1,43 @@
 <div ng-controller="workspaceDetailedCtrl">
-  <div class="col-sm-10 col-md-10" ng-show="item.class == 'Document'">
-    <!-- WYSIWIG -->
-    <h1>{{item.name}}</h1>
 
+  <!-- Unsupported mime type -->
+  <div class="col-sm-10 col-md-10" ng-show="currentObjMimeType == 'application/x-unknown-content-type'">
+    <div class="alert alert-warning" role="alert">
+      This document can't be viewed in browser window. Download the file 
+      <a href="downloadPath" class="alert-link">here.</a>
+    </div>
+    <div class="alert alert-warning" role="alert"></div>
   </div>
+
+  <!-- application/pdf -->
+  <div class="col-sm-10 col-md-10" ng-show="currentObjMimeType == 'application/pdf'">
+    <pdf-viewer
+    delegate-handle="pdf-container"
+    url= {{data}}
+    scale="1"
+    show-toolbar="true"
+    ></pdf-viewer>
+  </div>
+
+  <!-- audio/* -->
+  <div class="col-sm-10 col-md-10" ng-show="currentObjMimeType.match(/audio\/*/)">
+    <div>
+    	<button ng-click="audio.paused ? audio.play() : audio.pause()">Pause</button>
+    	<button ng-click="audio.restart()">Stop</button>
+    	<button ng-click="audio.muting = !audio.muting">Mute</button>
+
+    	<label>Current Time</label>
+    	<input class='form-control' type=text ng-model='audio.currentTime'>
+    	<label>Volume</label>
+    	<input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.volume'>
+    </div>
+  </div>
+
+  <!-- image/* -->
+  <div class="col-sm-10 col-md-10" ng-show="currentObjMimeType.match(/image\/*/)">
+    <div>
+    	<img ng-src="{{data}}" style="max-width: 500px; max-height: 500px" />
+    </div>
+  </div>
+
 </div>

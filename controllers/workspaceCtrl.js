@@ -17,25 +17,13 @@ angular.module("steam")
     };
 }])
 
-.controller("workspaceDetailedCtrl", ["$rootScope", "$scope", "handler", "ngAudio", "video", function($rootScope, $scope, handler, ngAudio, video){
-      $rootScope.user = handler.user().id;
-      $scope.downloadPath = $rootScope.restapi + $rootScope.currentObjPath;
-      handler.get($rootScope.currentObjPath + $rootScope.user).then(function(response) {
+.controller("workspaceDetailedCtrl", ["$rootScope", "$scope", "handler", "pdf", "ngAudio", "video", function($rootScope, $scope, handler, pdf, ngAudio, video){
+    $rootScope.user = handler.user().id;
+    $scope.downloadPath = $rootScope.restapi + "/home" + $rootScope.currentObjPath;
+    handler.get("/home" + $rootScope.currentObjPath).then(function(response) {
+        $scope.data = response;
+    })
 
-      $scope.data = response;
-      $scope.items = $scope.data.inventory;
-
-      // Image
-      $scope.image = {
-            src : "",
-            description : ""
-      }
-
-      // Audio
-      $scope.audio = ngAudio.load("");
-
-      // Video
-      $scope.video.addSource("", "");
-
-})
+    // Audio
+    $scope.audio = ngAudio.load(response);
 }]);
