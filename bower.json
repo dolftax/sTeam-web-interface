@@ -2,15 +2,8 @@
   "name": "sTeam-web-interface",
   "version": "0.0.1",
   "dependencies": {
-    "angular": "~1.3.15",
-    "jquery": "~2.1.4",
-    "bootstrap": "~3.3.4",
-    "angular-ui-router": "~0.2.15",
     "ngvideo": "~0.4.13",
     "angular-audio": "~1.6.2",
-    "angular-local-storage": "~0.2.2",
-    "textAngular": "~1.4.1",
-    "angular-bootstrap": "~0.13.0",
     "angular-pdf-viewer": "~0.2.7"
   },
   "private": true
