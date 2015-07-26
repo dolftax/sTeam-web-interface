@@ -1,29 +1,29 @@
-var frisby = require("frisby"),
-    objUnit = require("./objUnit"),
-    helper = require("./helpers"),
-    config = angular.injector(["ng", "module"]).get("config");
+var frisby = require('frisby')
+var objUnit = require('./objUnit')
+var helper = require('./helpers')
+var config = angular.injector(['ng', 'module']).get('config')
 
-frisby.create("Request `/home` returns proper JSON")
-    .get(config.baseurl + "rest.pike?request=/home")
-    .expectStatus(200)
-    .expectJSON({
-        "request": "/home",
-        "request-method": "GET",
-        "me": objUnit.testMeObj,
-        "inventory": function (val) {
-            val.forEach(function(e) {
-                testInventoryObj(e);
-            });
-        }
-    })
-.toss();
+frisby.create('Request `/home` returns proper JSON')
+  .get(config.baseurl + 'rest.pike?request=/home')
+  .expectStatus(200)
+  .expectJSON({
+    'request': '/home',
+    'request-method': 'GET',
+    'me': objUnit.testMeObj,
+    'inventory': function (val) {
+      val.forEach(function (e) {
+        testInventoryObj(e)
+      })
+    }
+  })
+  .toss()
 
-frisby.create("Request `/home/:user` returns proper JSON")
-    .get(config.baseurl + "rest.pike?request=/home/dolftax")
-    .expectStatus(200)
-    .expectJSON({
-        "request": "/dolftax",
-        "request-method": "GET",
-        "me": objUnit.testMeObj
-    })
-.toss();
+frisby.create('Request `/home/:user` returns proper JSON')
+  .get(config.baseurl + 'rest.pike?request=/home/dolftax')
+  .expectStatus(200)
+  .expectJSON({
+    'request': '/dolftax',
+    'request-method': 'GET',
+    'me': objUnit.testMeObj
+  })
+  .toss()

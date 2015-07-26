@@ -1,7 +1,7 @@
-angular.module("steam")
+angular.module('steam')
 
-.value("config",
-	{
-	    baseurl: "http://dev-back1.techgrind.asia/"
-	}
-);
+  .value('config',
+    {
+      baseurl: 'http://dev-back1.techgrind.asia/'
+    }
+)

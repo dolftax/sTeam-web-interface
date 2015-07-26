@@ -2,6 +2,8 @@
 
 Web interface for sTeam - https://github.com/eMBee/sTeam/tree/steam-2.9-source
 
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+
 ## Setup Instructions
 
 - Install npm
@@ -19,7 +21,7 @@ npm install && npm start
 ## Contributing
 
 #### Coding style
-  
+
 Do:
 
 - 4 spaces indent for JavaScript files.
