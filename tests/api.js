@@ -1,6 +1,5 @@
 var frisby = require('frisby')
 var objUnit = require('./objUnit')
-var helper = require('./helpers')
 var config = angular.injector(['ng', 'module']).get('config')
 
 frisby.create('Request `/home` returns proper JSON')
