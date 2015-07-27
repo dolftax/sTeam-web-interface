@@ -16,7 +16,7 @@ angular.module('steam')
     }
   }])
 
-  .controller('workspaceDetailedCtrl', ['$rootScope', '$scope', 'handler', 'pdf', 'ngAudio', 'video', function ($rootScope, $scope, handler, pdf, ngAudio, video) {
+  .controller('workspaceDetailedCtrl', ['$rootScope', '$scope', 'handler', 'pdf', 'ngAudio', function ($rootScope, $scope, handler, pdf, ngAudio) {
     $rootScope.user = handler.user().id
     $scope.downloadPath = $rootScope.restapi + '/home' + $rootScope.currentObjPath
     handler.get('/home' + $rootScope.currentObjPath).then(function (response) {
@@ -25,4 +25,10 @@ angular.module('steam')
 
     // Audio
     $scope.audio = ngAudio.load(response)
+
+    // Video
+    $scope.interface = {}
+    $scope.$on('$videoReady', function videoReady () {
+        $scope.interface.sources.add(response)
+    })
   }])
