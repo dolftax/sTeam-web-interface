@@ -31,4 +31,12 @@ angular.module('steam')
     $scope.$on('$videoReady', function videoReady () {
         $scope.interface.sources.add(response)
     })
+
+    // Text
+    taOptions.toolbar = [
+      ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
+      ['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
+      ['indent', 'outdent'],
+      ['html', 'insertImage','insertLink', 'insertVideo', 'wordcount']
+    ]
   }])
