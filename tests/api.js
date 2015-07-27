@@ -12,7 +12,7 @@ frisby.create('Request `/home` returns proper JSON')
     'me': objUnit.testMeObj,
     'inventory': function (val) {
       val.forEach(function (e) {
-        testInventoryObj(e)
+        objUnit.testInventoryObj(e)
       })
     }
   })
@@ -24,6 +24,11 @@ frisby.create('Request `/home/:user` returns proper JSON')
   .expectJSON({
     'request': '/dolftax',
     'request-method': 'GET',
-    'me': objUnit.testMeObj
+    'me': objUnit.testMeObj,
+    'inventory': function (val) {
+      val.forEach(function (e) {
+        objUnit.testInventoryObj(e)
+      })
+    }
   })
   .toss()
