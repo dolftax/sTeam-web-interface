@@ -8,18 +8,26 @@
     "node-static": "~0.7.6"
   },
   "devDependencies": {
-    "frisby": "~0.8.5",
+    "frisby": "^0.8.5",
     "standard": "~4.5.4"
   },
   "scripts": {
     "start": "node app.js",
     "postinstall": "node_modules/.bin/bower install",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard && jasmine-node tests/api.js"
   },
   "standard": {
     "ignore": [
       "node_modules",
       "bower_components"
+    ],
+    "global": [
+      "angular",
+      "response",
+      "taOptions",
+      "sys",
+      "jasmine",
+      "expect"
     ]
   },
   "repository": {

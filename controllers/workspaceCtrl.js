@@ -29,7 +29,7 @@ angular.module('steam')
     // Video
     $scope.interface = {}
     $scope.$on('$videoReady', function videoReady () {
-        $scope.interface.sources.add(response)
+      $scope.interface.sources.add(response)
     })
 
     // Text
@@ -37,6 +37,6 @@ angular.module('steam')
       ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
       ['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
       ['indent', 'outdent'],
-      ['html', 'insertImage','insertLink', 'insertVideo', 'wordcount']
+      ['html', 'insertImage', 'insertLink', 'insertVideo', 'wordcount']
     ]
   }])

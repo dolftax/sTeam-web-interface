@@ -32,4 +32,5 @@ exports.testInventoryObj = function (e) {
     var reMimeType = /\.(\w+)$/
     var reName = /\/(\w+)$/
     expect(reMimeType.exec(e.mime_type)).toEqual(reName.exec(e.name))
+  }
 }

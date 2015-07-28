@@ -15,7 +15,7 @@ angular.module('steam')
         return logindata && user && user.id && user.id !== 'guest'
       }
 
-      var stateHandler = function (classType, objPath, objMimeType) {
+      var stateHandler = function (classType, objPath, objMimeType) { // eslint-disable-line
         if (classType === 'Room') {
           $rootScope.currentObjPath = objPath
           $state.go('workarea.list', { path: objPath })
