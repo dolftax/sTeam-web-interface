@@ -4,14 +4,14 @@ angular.module('steam')
     $scope.createdoc = function () {
       $modal.open({
         templateUrl: 'views/createdoc.html',
-        controller: 'createdocCtrl'
+        controller: 'createDocCtrl'
       })
     }
 
     $scope.createroom = function () {
       $modal.open({
         templateUrl: 'views/createroom.html',
-        controller: 'createroomCtrl'
+        controller: 'createRoomCtrl'
       })
     }
 
@@ -19,6 +19,6 @@ angular.module('steam')
 
   .controller('commentsCtrl', ['$scope', function ($scope) {}])
 
-  .controller('createDocCtrl', ['$scope', function ($scope) {}])
+  .controller('createDocCtrl', ['$scope', function ($scope) { }])
 
   .controller('createRoomCtrl', ['$scope', function ($scope) {}])

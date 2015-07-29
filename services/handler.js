@@ -6,8 +6,8 @@ angular.module('steam')
 
       var handle_request = function (response) {
         localStorageService.set('user', JSON.stringify(response.data.me))
-        $rootScope.user = response.data.me.id
-        if (response.status === 401) {
+          $rootScope.user = response.data.me.id
+          if (response.status === 401) {
           $rootScope.authStatus = false
         }
         return response.data
@@ -120,5 +120,6 @@ angular.module('steam')
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
       if (toState && toState.params && toState.params.autoActivateChild) {
         $state.go(toState.params.autoActivateChild)
+        $rootScope.user = handler.user().id
       }})
   }])
