@@ -8,15 +8,4 @@ angular.module('steam')
         $state.go('login')
       })
     }
-
-    $scope.logOut = function () {
-      handler.logout()
-    }
-
-    $scope.isLogOut = function () {
-      if (handler.loginp() == null || !handler.loginp()) {
-        return true
-      } else return false
-    }
-
   }])

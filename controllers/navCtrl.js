@@ -1,0 +1,15 @@
+angular.module('steam')
+
+  .controller('navCtrl', ['$rootScope', '$scope', 'handler', '$state', function ($rootScope, $scope, handler, $state) {
+    $scope.authStatus = {
+      logOut: function () {
+        handler.logout()
+        $state.go('login')
+      },
+      isLoggedOut: function () {
+        if (handler.loginp() == null || !handler.loginp()) {
+          return true
+        } else return false
+      }
+    }
+  }])

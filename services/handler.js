@@ -6,6 +6,10 @@ angular.module('steam')
 
       var handle_request = function (response) {
         localStorageService.set('user', JSON.stringify(response.data.me))
+        $rootScope.user = response.data.me.id
+        if (response.status === 401) {
+          $rootScope.authStatus = false
+        }
         return response.data
       }
 
@@ -43,7 +47,11 @@ angular.module('steam')
             localStorageService.set('logindata', JSON.stringify({
               Authorization: 'Basic ' + window.btoa(userid + ':' + password)
             }))
-            return $http.get($rootScope.restapi + 'login', headers(true)).then(handle_request)
+            return $http.get($rootScope.restapi + 'login', headers(true))
+              .then(handle_request)
+              .catch(function (e) {
+                $rootScope.authStatus = false
+              })
           }
         },
 
@@ -107,8 +115,8 @@ angular.module('steam')
     })
   }])
 
-  // Auto activating Private state by default
-  .run(['$rootScope', '$state', function ($rootScope, $state) {
+  // Actions on state change
+  .run(['$rootScope', '$state', 'handler', function ($rootScope, $state, handler) {
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
       if (toState && toState.params && toState.params.autoActivateChild) {
         $state.go(toState.params.autoActivateChild)

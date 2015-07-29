@@ -13,7 +13,6 @@
   },
   "scripts": {
     "start": "node app.js",
-    "postinstall": "node_modules/.bin/bower install",
     "test": "standard && jasmine-node tests/api.js"
   },
   "standard": {

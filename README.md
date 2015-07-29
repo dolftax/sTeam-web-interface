@@ -20,20 +20,9 @@ npm install && npm start
 
 ## Contributing
 
-#### Coding style
+#### Development board
 
-Do:
-
-- 4 spaces indent for JavaScript files.
-- 2 space for rest of them.
-- Keep newline at EOF.
-- Use newlines liberally to visually separate logical blocks of code.
-
-Dont:
-
-- Don't mix tabs and spaces.
-- Don't use comma-first coding style.
-- Do not, at whatever cost, leave trailing whitespaces. Fix your editor if needed.
+[Trello board](https://trello.com/b/Jd3TJ9Ru/steam-web-interface-rewrite)
 
 
 #### Commits

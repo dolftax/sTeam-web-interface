@@ -16,8 +16,11 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button class="btn btn-success" type="submit" id="btnSignIn" ng-click="logIn();">Sign in</button> <button class="btn btn-danger" type="submit">Forgot password</button>
+          <button class="btn btn-success" type="submit" id="btnSignIn" ng-click="logIn()">Sign in</button> <button class="btn btn-danger" type="submit">Forgot password</button>
         </div>
+      </div>
+      <div class="form-group" ng-if="authStatus === false">
+        <span class="col-sm-offset-2 col-sm-8 alert alert-warning" role="alert">Wrong Username/Password</span>
       </div>
     </form>
   </div>
