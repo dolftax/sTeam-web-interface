@@ -1,6 +1,6 @@
 <div class="column" ng-controller="workspaceListCtrl">
   <div class="col-sm-4 col-md-3" ng-repeat="item in items">
-    <div id="panel" class="panel panel-info" ng-if="item.class == 'Room'" ng-click="clickInvoke(item.class, item.path, item.mime_type)">
+    <div id="panel" class="panel panel-info" ng-if="item.class == 'Room'" ng-click="invokeObj(item.class, item.path, item.mime_type)">
       <p class="panel-heading">
         {{item.name}}
       </p>
@@ -8,7 +8,7 @@
         {{item.description}}
       </p>
     </div>
-    <div id="panel" class="panel panel-success" ng-if="item.class == 'Document'" ng-click="clickInvoke(item.class, item.path, item.mime_type)">
+    <div id="panel" class="panel panel-success" ng-if="item.class == 'Document'" ng-click="invokeObj(item.class, item.path, item.mime_type)">
       <p class="panel-heading">
         {{item.name}}
       </p>

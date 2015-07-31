@@ -19,17 +19,6 @@ angular.module('steam')
         return logindata && user && user.id && user.id !== 'guest'
       }
 
-      var stateHandler = function (classType, objPath, objMimeType) { // eslint-disable-line
-        if (classType === 'Room') {
-          $rootScope.currentObjPath = objPath
-          $state.go('workarea.list', { path: objPath })
-        } else if (classType === 'Document') {
-          $rootScope.currentObjPath = objPath
-          $rootScope.currentObjMimeType = objMimeType
-          $state.go('workarea.detailed', { path: objPath, mimeType: objMimeType })
-        }
-      }
-
       var headers = function (login) {
         var logindata = JSON.parse(localStorageService.get('logindata'))
         if (loginp() || (login && logindata)) {
@@ -65,6 +54,17 @@ angular.module('steam')
         user: function () {
           if (loginp()) {
             return JSON.parse(localStorageService.get('user'))
+          }
+        },
+
+        stateHandler: function (classType, objPath, objMimeType) { // eslint-disable-line
+          if (classType === 'Room') {
+            $rootScope.currentObjPath = objPath
+            $state.go('workarea.list', { path: objPath })
+          } else if (classType === 'Document') {
+            $rootScope.currentObjPath = objPath
+            $rootScope.currentObjMimeType = objMimeType
+            $state.go('workarea.detailed', { path: objPath, mimeType: objMimeType })
           }
         },
 
