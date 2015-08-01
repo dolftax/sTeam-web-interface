@@ -7,7 +7,7 @@ angular.module('steam')
       }
       handler.stateHandler(itemClass, itemPath, itemMimeType)
     }
-    if (($rootScope.currentObjPath === 'undefined') || ($rootScope.currentObjPath !== ('/home/' + $rootScope.user))) {
+    if (($rootScope.currentObjPath !== ('/home/' + $rootScope.user))) {
       handler.get('/home/' + $rootScope.user).then(function (response) {
         $scope.data = response
         $scope.items = $scope.data.inventory
@@ -17,22 +17,22 @@ angular.module('steam')
         $scope.data = response
         $scope.items = $scope.data.inventory
       })
-    }
+     }
   }])
 
   .controller('workspaceDetailedCtrl', ['$rootScope', '$scope', 'handler', 'ngAudio', function ($rootScope, $scope, handler, ngAudio) {
     $scope.downloadPath = $rootScope.restapi + '/home' + $rootScope.currentObjPath
-    handler.get('/home' + $rootScope.currentObjPath).then(function (response) {
+    handler.get('/home/' + $rootScope.currentObjPath).then(function (response) {
       $scope.data = response
     })
 
     // Audio
-    $scope.audio = ngAudio.load(response)
+    $scope.audio = ngAudio.load($scope.data)
 
     // Video
     $scope.interface = {}
     $scope.$on('$videoReady', function videoReady () {
-      $scope.interface.sources.add(response)
+      $scope.interface.sources.add($scope.data)
     })
 
     // Text

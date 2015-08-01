@@ -35,7 +35,7 @@ angular.module('steam', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'tex
       })
 
       .state('workarea.list', {
-        url: '^/workarea/:path',
+        url: '^/room/:path',
         requireLogin: true,
         views: {
           'options': {
@@ -54,7 +54,7 @@ angular.module('steam', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'tex
       })
 
       .state('workarea.detailed', {
-        url: '^/workarea/:path',
+        url: '^/document/:path',
         requireLogin: true,
         views: {
           'options': {

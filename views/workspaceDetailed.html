@@ -1,7 +1,7 @@
 <div ng-controller="workspaceDetailedCtrl">
 
   <!-- Unsupported mime type -->
-  <div class="col-sm-10 col-md-10" ng-show="currentObjMimeType == 'application/x-unknown-content-type'">
+  <div class="col-sm-10 col-md-10" ng-if="currentObjMimeType == 'application/x-unknown-content-type'">
     <div class="alert alert-warning" role="alert">
       This document can't be viewed in browser window. Download the file
       <a href="downloadPath" class="alert-link">here.</a>
@@ -10,24 +10,24 @@
   </div>
 
   <!-- image/* -->
-  <div class="col-sm-10 col-md-10" ng-show="currentObjMimeType.match(/image\/*/)">
+  <div class="col-sm-10 col-md-10" ng-if="currentObjMimeType.match(/image\/*/)">
     <div>
       <img ng-src="{{data}}" style="max-width: 500px; max-height: 500px" />
     </div>
   </div>
 
   <!-- application/pdf -->
-  <div class="col-sm-10 col-md-10" ng-show="currentObjMimeType == 'application/pdf'">
+  <div class="col-sm-10 col-md-10" ng-if="currentObjMimeType == 'application/pdf'">
     <pdf-viewer
     delegate-handle="pdf-container"
     url= {{data}}
     scale="1"
-    show-toolbar="true"
+    if-toolbar="true"
     ></pdf-viewer>
   </div>
 
   <!-- audio/* -->
-  <div class="col-sm-10 col-md-10" ng-show="currentObjMimeType.match(/audio\/*/)">
+  <div class="col-sm-10 col-md-10" ng-if="currentObjMimeType.match(/audio\/*/)">
     <div>
     	<button ng-click="audio.paused ? audio.play() : audio.pause()">Pause</button>
     	<button ng-click="audio.restart()">Stop</button>
@@ -41,7 +41,7 @@
   </div>
 
   <!-- video/* -->
-  <div class="col-sm-10 col-md-10" ng-show="currentObjMimeType.match(/video\/*/)">
+  <div class="col-sm-10 col-md-10" ng-if="currentObjMimeType.match(/video\/*/)">
     <div class="video" ng-video ng-model="interface">
       <section vi-controls class="controls">
         <span ng-click="interface.controls.play()" title="Play" class="glyphicon glyphicon-play"></span>
@@ -51,7 +51,7 @@
   </div>
 
   <!-- text -->
-  <div class="col-sm-10 col-md-10" ng-show="currentObjMimeType.match(/text\/*/)">
+  <div class="col-sm-10 col-md-10" ng-if="currentObjMimeType.match(/text\/*/)">
     <div text-angular ng-model="data"></div>
   </div>
 
