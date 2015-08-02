@@ -2,9 +2,10 @@ angular.module('steam')
 
   .factory('handler', ['$http', 'localStorageService', 'config', '$state', '$rootScope',
     function ($http, localStorageService, config, $state, $rootScope) {
+      $rootScope.baseurl = config.baseurl
       $rootScope.restapi = config.baseurl + 'scripts/rest.pike?request='
 
-      var handle_request = function (response) {
+      var handleRequest = function (response) {
         localStorageService.set('user', JSON.stringify(response.data.me))
           $rootScope.user = response.data.me.id
           if (response.status === 401) {
@@ -47,7 +48,7 @@ angular.module('steam')
         logout: function () {
           localStorageService.remove('logindata')
           localStorageService.remove('user')
-          return $http.get($rootScope.restapi + 'login', headers()).then(handle_request)
+          return $http.get($rootScope.restapi + 'login', headers()).then(handleRequest)
         },
 
         loginp: loginp,
@@ -64,24 +65,30 @@ angular.module('steam')
           } else if (classType === 'Document') {
             $rootScope.currentObjPath = objPath
             $rootScope.currentObjMimeType = objMimeType
-            $state.go('workarea.detailed', { path: objPath, mimeType: objMimeType })
+            $state.go('workarea.detailed', { path: objPath })
           }
         },
 
-        get: function (request) {
-          return $http.get($rootScope.restapi + request, headers()).then(handle_request)
+        get: function (request, isDoc) {
+          if (isDoc) {
+            return $http.get(request, headers())
+              .then(function (data) {
+                return data
+              })
+            }
+          return $http.get($rootScope.restapi + request, headers()).then(handleRequest)
         },
 
         post: function (request, data) {
-          return $http.post($rootScope.restapi + request, data, headers()).then(handle_request)
+          return $http.post($rootScope.restapi + request, data, headers()).then(handleRequest)
         },
 
         put: function (request, data) {
-          return $http.put($rootScope.restapi + request, data, headers()).then(handle_request)
+          return $http.put($rootScope.restapi + request, data, headers()).then(handleRequest)
         },
 
         delete: function (request) {
-          return $http['delete']($rootScope.restapi + request, headers()).then(handle_request)
+          return $http['delete']($rootScope.restapi + request, headers()).then(handleRequest)
         }
       }
     }])

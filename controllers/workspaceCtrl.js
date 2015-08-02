@@ -20,26 +20,34 @@ angular.module('steam')
      }
   }])
 
-  .controller('workspaceDetailedCtrl', ['$rootScope', '$scope', 'handler', 'ngAudio', function ($rootScope, $scope, handler, ngAudio) {
-    $scope.downloadPath = $rootScope.restapi + '/home' + $rootScope.currentObjPath
-    handler.get('/home/' + $rootScope.currentObjPath).then(function (response) {
+  .controller('workspaceDetailedCtrl', ['$http', '$rootScope', '$scope', 'handler', function ($http, $rootScope, $scope, handler) {
+    $scope.dataSrc = $rootScope.baseurl + 'home/' + $rootScope.currentObjPath
+    handler.get($scope.dataSrc, true).then(function (response) {
       $scope.data = response
     })
+    console.log($scope.data)
+    $scope.mimeTypeHandler = function () {
+      if($rootScope.currentObjMimeType === 'application/x-unknown-content-type') {
+        return 'unknown'
+      } else if ($rootScope.currentObjMimeType.match(/image\/*/)) {
+        return 'image'
+      } else if ($rootScope.currentObjMimeType === 'application/pdf') {
+        return 'pdf'
+      } else if ($rootScope.currentObjMimeType.match(/audio\/*/)) {
+        return 'audio'
+      } else if ($rootScope.currentObjMimeType.match(/video\/*/)) {
+        return 'video'
+      } else if ($rootScope.currentObjMimeType.match(/text\/*/)) {
+        return 'text'
+      } else { return 'notfound' }
+    }
 
     // Audio
-    $scope.audio = ngAudio.load($scope.data)
+    // $scope.audio = ngAudio.load($scope.data)
 
     // Video
     $scope.interface = {}
     $scope.$on('$videoReady', function videoReady () {
       $scope.interface.sources.add($scope.data)
     })
-
-    // Text
-    taOptions.toolbar = [
-      ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
-      ['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
-      ['indent', 'outdent'],
-      ['html', 'insertImage', 'insertLink', 'insertVideo', 'wordcount']
-    ]
   }])
