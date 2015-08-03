@@ -38,7 +38,7 @@ angular.module('steam')
               Authorization: 'Basic ' + window.btoa(userid + ':' + password)
             }))
             return $http.get($rootScope.restapi + 'login', headers(true))
-              .then(handle_request)
+              .then(handleRequest)
               .catch(function (e) {
                 $rootScope.authStatus = false
               })
