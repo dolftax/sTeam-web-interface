@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/textAngular/1.4.2/dist/textAngular.css">
+    <link rel="stylesheet" type="text/css" href="//css-spinners.com/css/spinner/three-quarters.css">
 
     <!-- Angular components -->
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
@@ -50,6 +51,7 @@
           </button>
           <a class="navbar-brand" href="/">sTeam Collaboration Platform</a>
         </div>
+        <div style="margin: 0.6em 0em 0em 18em" class="nav navbar-nav three-quarters-loader" ng-show="loading"></div>
         <div ng-if="!authStatus.isLoggedOut()">
           <span style="padding: 0.6em 5em" class="nav navbar-nav navbar-right">
               <span id="user" style="font-size: 1.2em">Welcome, {{user}}!</span>

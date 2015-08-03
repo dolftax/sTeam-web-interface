@@ -11,6 +11,7 @@ angular.module('steam')
           if (response.status === 401) {
           $rootScope.authStatus = false
         }
+        $rootScope.loading = false
         return response.data
       }
 
@@ -70,9 +71,11 @@ angular.module('steam')
         },
 
         get: function (request, isDoc) {
+          $rootScope.loading = true
           if (isDoc) {
             return $http.get(request, headers())
               .then(function (response) {
+                $rootScope.loading = false
                 return response.data
               })
             }
