@@ -25,7 +25,6 @@ angular.module('steam')
     handler.get($scope.dataSrc, true).then(function (response) {
       $scope.data = response
     })
-    console.log($scope.data)
     $scope.mimeTypeHandler = function () {
       if($rootScope.currentObjMimeType === 'application/x-unknown-content-type') {
         return 'unknown'

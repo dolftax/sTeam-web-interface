@@ -72,8 +72,8 @@ angular.module('steam')
         get: function (request, isDoc) {
           if (isDoc) {
             return $http.get(request, headers())
-              .then(function (data) {
-                return data
+              .then(function (response) {
+                return response.data
               })
             }
           return $http.get($rootScope.restapi + request, headers()).then(handleRequest)
