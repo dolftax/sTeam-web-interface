@@ -1,2 +1,6 @@
 # Logs
 *.log
+
+# Dependency modules
+node_modules/
+bower_components/

@@ -1,4 +1,4 @@
-{
+  {
   "name": "sTeam-web-interface",
   "version": "0.1.0",
   "description": "Web interface for Steam Collaboration platform",
@@ -12,6 +12,7 @@
     "standard": "~4.5.4"
   },
   "scripts": {
+    "postinstall": "node_modules/.bin/bower install",
     "start": "node app.js",
     "test": "standard && jasmine-node tests/api.js"
   },
