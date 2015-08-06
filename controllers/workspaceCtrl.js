@@ -1,42 +1,44 @@
 angular.module('steam')
 
-  .controller('workspaceListCtrl', ['$rootScope', '$scope', 'handler', function ($rootScope, $scope, handler) {
+  .controller('workspaceListCtrl', ['$scope', 'handler', 'localStorageService',
+    function ($scope, handler, localStorageService) {
     $scope.invokeObj = function (itemClass, itemPath, itemMimeType) {
       while(itemPath.charAt(0) === '/') {
         itemPath = itemPath.substr(1)
       }
       handler.stateHandler(itemClass, itemPath, itemMimeType)
     }
-    if (($rootScope.currentObjPath !== ('/home/' + $rootScope.user))) {
-      handler.get('/home/' + $rootScope.user).then(function (response) {
+    if ((localStorageService.get('currentObjPath') !== ('/home/' + localStorageService.get('userId')))) {
+      handler.get('/home/' + localStorageService.get('userId')).then(function (response) {
         $scope.data = response
         $scope.items = $scope.data.inventory
       })
     } else {
-      handler.get('/home' + $rootScope.currentObjPath).then(function (response) {
+      handler.get('/home' + localStorageService.get('currentObjPath')).then(function (response) {
         $scope.data = response
         $scope.items = $scope.data.inventory
       })
      }
   }])
 
-  .controller('workspaceDetailedCtrl', ['$http', '$rootScope', '$scope', 'handler', function ($http, $rootScope, $scope, handler) {
-    $scope.dataSrc = $rootScope.baseurl + 'home/' + $rootScope.currentObjPath
+  .controller('workspaceDetailedCtrl', ['$http', '$scope', 'handler', 'localStorageService',
+   function ($http, $scope, handler, localStorageService) {
+    $scope.dataSrc = localStorageService.get('baseurl') + 'home/' + localStorageService.get('currentObjPath')
     handler.get($scope.dataSrc, true).then(function (response) {
       $scope.data = response
     })
     $scope.mimeTypeHandler = function () {
-      if($rootScope.currentObjMimeType === 'application/x-unknown-content-type') {
+      if(localStorageService.get('currentObjMimeType') === 'application/x-unknown-content-type') {
         return 'unknown'
-      } else if ($rootScope.currentObjMimeType.match(/image\/*/)) {
+      } else if (localStorageService.get('currentObjMimeType').match(/image\/*/)) {
         return 'image'
-      } else if ($rootScope.currentObjMimeType === 'application/pdf') {
+      } else if (localStorageService.get('currentObjMimeType') === 'application/pdf') {
         return 'pdf'
-      } else if ($rootScope.currentObjMimeType.match(/audio\/*/)) {
+      } else if (localStorageService.get('currentObjMimeType').match(/audio\/*/)) {
         return 'audio'
-      } else if ($rootScope.currentObjMimeType.match(/video\/*/)) {
+      } else if (localStorageService.get('currentObjMimeType').match(/video\/*/)) {
         return 'video'
-      } else if ($rootScope.currentObjMimeType.match(/text\/*/)) {
+      } else if (localStorageService.get('currentObjMimeType').match(/text\/*/)) {
         return 'text'
       } else { return 'notfound' }
     }

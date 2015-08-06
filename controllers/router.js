@@ -1,6 +1,7 @@
 angular.module('steam', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'textAngular', 'pdf', 'ngVideo'])
 
-  .config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
+  .config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
+    function ($locationProvider, $stateProvider, $urlRouterProvider) {
     $stateProvider.state('login', {
       url: '/login',
       templateUrl: '/templates/login.html',
@@ -69,10 +70,5 @@ angular.module('steam', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'tex
           }
         }
       })
-
-    // Handle when routes here. In case of accesing a room directly, post login,
-    // map the request URL and redirect to /path_to_room
-    $urlRouterProvider
-      .when('', '/')
-      .otherwise('/login')
-  })
+  $urlRouterProvider.otherwise('/login')
+}])

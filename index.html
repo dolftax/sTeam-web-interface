@@ -55,7 +55,7 @@
         <div style="margin: 0.6em 0em 0em 18em" class="nav navbar-nav three-quarters-loader" ng-show="loading"></div>
         <div ng-if="!authStatus.isLoggedOut()">
           <span style="padding: 0.6em 5em" class="nav navbar-nav navbar-right">
-              <span id="user" style="font-size: 1.2em">Welcome, {{user}}!</span>
+              <span id="user" style="font-size: 1.2em">Welcome, {{userId}}!</span>
               <button type="button" class="btn btn-danger" ng-click="authStatus.logOut()">Logout</button>
           </span>
           <form class="navbar-form navbar-right">
