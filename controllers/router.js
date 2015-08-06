@@ -1,8 +1,6 @@
 angular.module('steam', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'textAngular', 'pdf', 'ngVideo'])
 
   .config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
-    $locationProvider.html5Mode(true)
-
     $stateProvider.state('login', {
       url: '/login',
       templateUrl: '/templates/login.html',
