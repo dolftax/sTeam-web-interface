@@ -1,15 +1,16 @@
 angular.module('steam')
 
-  .controller('workspaceListCtrl', ['$scope', 'handler', 'localStorageService',
-    function ($scope, handler, localStorageService) {
+  .controller('workspaceListCtrl', ['$rootScope', '$scope', 'handler', 'localStorageService',
+    function ($rootScope, $scope, handler, localStorageService) {
     $scope.invokeObj = function (itemClass, itemPath, itemMimeType) {
       while(itemPath.charAt(0) === '/') {
         itemPath = itemPath.substr(1)
       }
       handler.stateHandler(itemClass, itemPath, itemMimeType)
     }
-    if ((localStorageService.get('currentObjPath') !== ('/home/' + localStorageService.get('userId')))) {
-      handler.get('/home/' + localStorageService.get('userId')).then(function (response) {
+
+    if ((localStorageService.get('currentObjPath') !== ('/home/' + $rootScope.user))) {
+      handler.get('/home/' + $rootScope.user).then(function (response) {
         $scope.data = response
         $scope.items = $scope.data.inventory
       })

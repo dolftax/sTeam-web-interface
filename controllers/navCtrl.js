@@ -1,7 +1,7 @@
 angular.module('steam')
 
-  .controller('navCtrl', ['$scope', 'handler', '$state', 'localStorageService',
-    function ($scope, handler, $state, localStorageService) {
+  .controller('navCtrl', ['$rootScope', '$scope', 'handler', '$state', 'localStorageService',
+    function ($rootScope, $scope, handler, $state, localStorageService) {
     $scope.authStatus = {
       logOut: function () {
         handler.logout()
@@ -13,5 +13,5 @@ angular.module('steam')
         } else return false
       }
     }
-    $scope.userId = localStorageService.get('userId')
+    $rootScope.user = localStorageService.get('username')
   }])

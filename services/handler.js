@@ -6,10 +6,8 @@ angular.module('steam')
       localStorageService.set('restapi', (config.baseurl + 'scripts/rest.pike?request='))
       var handleRequest = function (response) {
         localStorageService.set('user', JSON.stringify(response.data.me))
-          localStorageService.set('userId', response.data.me.id)
-          if (response.status === 401) {
-          localStorageService.set('authStatus', false)
-        }
+        $rootScope.user = response.data.me.id
+        localStorageService.set('username', $rootScope.user)
         $rootScope.loading = false
         return response.data
       }
@@ -38,17 +36,21 @@ angular.module('steam')
               Authorization: 'Basic ' + window.btoa(userid + ':' + password)
             }))
             return $http.get(localStorageService.get('restapi') + 'login', headers(true))
-              .then(handleRequest)
-              .catch(function (e) {
-                localStorageService.set('authStatus', false)
-              })
+            .then(handleRequest)
+            .catch( function () {
+              localStorageService.set('authStatus', false)
+              $rootScope.loading = false
+              $rootScope.authStatus = false
+            })
           }
         },
 
         loginp: loginp,
         logout: function () {
           localStorageService.clearAll()
-          $state.go('login')
+          $rootScope.authStatus = null
+          localStorageService.set('restapi', (config.baseurl + 'scripts/rest.pike?request='))
+          return $http.get(localStorageService.get('restapi') + "login", headers()).then(handleRequest);
         },
 
         user: function () {
@@ -113,6 +115,6 @@ angular.module('steam')
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
       if (toState && toState.params && toState.params.autoActivateChild) {
         $state.go(toState.params.autoActivateChild)
-        localStorageService.set('userId', handler.user().id)
+        $rootScope.userId = handler.user().id
       }})
-  }])
+    }])
