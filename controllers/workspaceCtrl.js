@@ -8,18 +8,20 @@ angular.module('steam')
       }
       handler.stateHandler(itemClass, itemPath, itemMimeType)
     }
-
-    if ((localStorageService.get('currentObjPath') !== ('/home/' + $rootScope.user))) {
+    handler.breadcrumbFunc()
+    if ($rootScope.navigationTrack.length == 1) {
       handler.get('/home/' + $rootScope.user).then(function (response) {
         $scope.data = response
         $scope.items = $scope.data.inventory
       })
     } else {
-      handler.get('/home' + localStorageService.get('currentObjPath')).then(function (response) {
+      handler.get('/home/' + localStorageService.get('currentObjPath')).then(function (response) {
+        console.log(localStorageService.get('currentObjPath'))
+        console.log('me')
         $scope.data = response
         $scope.items = $scope.data.inventory
       })
-     }
+    }
   }])
 
   .controller('workspaceDetailedCtrl', ['$http', '$scope', 'handler', 'localStorageService',
