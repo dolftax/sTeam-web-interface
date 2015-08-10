@@ -2,11 +2,8 @@
   <div class="row">
     <div class="col-xs-3 col-md-3">
       <ol class="breadcrumb">
-        <li>
-          <a href="active">Level 1</a>
-        </li>
-        <li>
-          <a href="#">Level 2</a>
+        <li ng-repeat="item in navigationTrack | reverse">
+            <a href="">{{item}}</a>
         </li>
       </ol>
     </div>

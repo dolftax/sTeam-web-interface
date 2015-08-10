@@ -18,6 +18,19 @@ angular.module('steam')
         return logindata && user && user.id && user.id !== 'guest'
       }
 
+      var breadcrumbFunc = function () {
+        var locationRef = location.href
+        var locationArray = locationRef.split('/')
+        $rootScope.navigationTrack = []
+        for(var i = locationArray.length - 1; i > 0; i --) {
+          if(locationArray[i] !== ('/' && '')) {
+            locationArray[i] == 'login' ? locationArray[i] = 'room' : locationArray[i] = locationArray [i]
+            $rootScope.navigationTrack.push(decodeURIComponent(locationArray[i]))
+          }
+        }
+      $rootScope.navigationTrack.length = $rootScope.navigationTrack.length - 2
+      }
+
       var headers = function (login) {
         var logindata = JSON.parse(localStorageService.get('logindata'))
         if (loginp() || (login && logindata)) {
@@ -38,7 +51,6 @@ angular.module('steam')
             return $http.get(localStorageService.get('restapi') + 'login', headers(true))
             .then(handleRequest)
             .catch( function () {
-              localStorageService.set('authStatus', false)
               $rootScope.loading = false
               $rootScope.authStatus = false
             })
@@ -46,9 +58,12 @@ angular.module('steam')
         },
 
         loginp: loginp,
+        breadcrumbFunc: breadcrumbFunc,
         logout: function () {
           localStorageService.clearAll()
           $rootScope.authStatus = null
+          localStorageService.set('currentObjMimeType', ' ')
+          localStorageService.set('currentObjPath', ' ')
           localStorageService.set('restapi', (config.baseurl + 'scripts/rest.pike?request='))
           return $http.get(localStorageService.get('restapi') + "login", headers()).then(handleRequest);
         },
@@ -72,6 +87,7 @@ angular.module('steam')
 
         get: function (request, isDoc) {
           $rootScope.loading = true
+          breadcrumbFunc()
           if (isDoc) {
             return $http.get(request, headers())
               .then(function (response) {
@@ -97,7 +113,8 @@ angular.module('steam')
     }])
 
   // Handle authentication on state change
-  .run(['$rootScope', '$state', 'handler', function ($rootScope, $state, handler) {
+  .run(['$rootScope', '$state', 'handler',
+    function ($rootScope, $state, handler) {
     $rootScope.$on('$stateChangeStart', function (event, next, current) {
       if (!handler.loginp() && next.requireLogin) {
         event.preventDefault()
@@ -110,11 +127,10 @@ angular.module('steam')
   }])
 
   // Actions on state change
-  .run(['$rootScope', '$state', 'handler', 'localStorageService',
-    function ($rootScope, $state, handler, localStorageService) {
+  .run(['$rootScope', '$state', 'handler',
+    function ($rootScope, $state, handler) {
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
       if (toState && toState.params && toState.params.autoActivateChild) {
         $state.go(toState.params.autoActivateChild)
-        $rootScope.userId = handler.user().id
       }})
     }])

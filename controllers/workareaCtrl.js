@@ -17,6 +17,12 @@ angular.module('steam')
 
   }])
 
+  .filter('reverse', function () {
+    return function(items) {
+      return items.slice().reverse()
+    }
+  })
+
   .controller('commentsCtrl', ['$scope', function ($scope) {}])
 
   .controller('createDocCtrl', ['$scope', function ($scope) { }])
