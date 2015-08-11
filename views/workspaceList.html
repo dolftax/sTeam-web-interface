@@ -4,17 +4,23 @@
       <p class="panel-heading">
         {{item.name}}
       </p>
-      <p class="panel-body">
+      <p class="panel-body" ng-if="item.description != ''">
         {{item.description}}
       </p>
+      <p class="panel-body" ng-if="item.description.length == 0">
+        No description found
+      <p>
     </div>
     <div id="panel" class="panel panel-success" ng-if="item.class == 'Document'" ng-click="invokeObj(item.class, item.path, item.mime_type)">
       <p class="panel-heading">
         {{item.name}}
       </p>
-      <p class="panel-body">
+            <p class="panel-body" ng-if="item.description != ''">
         {{item.description}}
       </p>
+      <p class="panel-body" ng-if="item.description.length == 0">
+        No description found
+      <p>
     </div>
   </div>
 </div>

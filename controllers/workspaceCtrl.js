@@ -16,26 +16,30 @@ angular.module('steam')
       })
     } else {
       handler.get('/home/' + localStorageService.get('currentObjPath')).then(function (response) {
-        console.log(localStorageService.get('currentObjPath'))
-        console.log('me')
         $scope.data = response
         $scope.items = $scope.data.inventory
       })
     }
   }])
 
-  .controller('workspaceDetailedCtrl', ['$http', '$scope', 'handler', 'localStorageService',
-   function ($http, $scope, handler, localStorageService) {
+  .filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url)
+    }
+  }])
+
+  .controller('workspaceDetailedCtrl', ['$http', '$scope', 'handler', 'localStorageService', 'PDFViewerService',
+   function ($http, $scope, handler, localStorageService, pdf) {
     $scope.dataSrc = localStorageService.get('baseurl') + 'home/' + localStorageService.get('currentObjPath')
     handler.get($scope.dataSrc, true).then(function (response) {
       $scope.data = response
     })
     $scope.mimeTypeHandler = function () {
-      if(localStorageService.get('currentObjMimeType') === 'application/x-unknown-content-type') {
+      if(localStorageService.get('currentObjMimeType') == 'application/x-unknown-content-type') {
         return 'unknown'
       } else if (localStorageService.get('currentObjMimeType').match(/image\/*/)) {
         return 'image'
-      } else if (localStorageService.get('currentObjMimeType') === 'application/pdf') {
+      } else if (localStorageService.get('currentObjMimeType') == 'application/pdf') {
         return 'pdf'
       } else if (localStorageService.get('currentObjMimeType').match(/audio\/*/)) {
         return 'audio'
@@ -44,6 +48,26 @@ angular.module('steam')
       } else if (localStorageService.get('currentObjMimeType').match(/text\/*/)) {
         return 'text'
       } else { return 'notfound' }
+    }
+
+    // Pdf
+    $scope.pdfURL = $scope.dataSrc
+    $scope.instance = pdf.Instance("viewer");
+    $scope.nextPage = function() {
+      $scope.instance.nextPage()
+    }
+    $scope.prevPage = function() {
+      $scope.instance.prevPage()
+    }
+    $scope.gotoPage = function(page) {
+      $scope.instance.gotoPage(page)
+    }
+    $scope.pageLoaded = function(curPage, totalPages) {
+      $scope.currentPage = curPage
+      $scope.totalPages = totalPages
+    }
+    $scope.loadProgress = function(loaded, total, state) {
+      console.log('loaded =', loaded, 'total =', total, 'state =', state)
     }
 
     // Audio

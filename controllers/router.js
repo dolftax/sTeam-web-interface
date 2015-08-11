@@ -1,4 +1,4 @@
-angular.module('steam', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'textAngular', 'pdf', 'ngVideo'])
+angular.module('steam', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'textAngular', 'ngPDFViewer', 'ngVideo'])
 
   .config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
     function ($locationProvider, $stateProvider, $urlRouterProvider) {
