@@ -122,6 +122,7 @@ angular.module('steam')
       } else if (handler.loginp() && !next.requireLogin) {
         event.preventDefault()
         $state.go('workarea.list')
+        localStorageService.set('baseurl', config.baseurl)
       }
     })
   }])
