@@ -70,5 +70,5 @@ angular.module('steam', ['ui.router', 'ui.bootstrap', 'LocalStorageModule', 'tex
           }
         }
       })
-  $urlRouterProvider.otherwise('/login')
+  $urlRouterProvider.otherwise('/room/')
 }])

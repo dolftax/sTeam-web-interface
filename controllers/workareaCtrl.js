@@ -1,6 +1,7 @@
 angular.module('steam')
 
-  .controller('optionsCtrl', ['$scope', '$modal', function ($scope, $modal) {
+  .controller('optionsCtrl', ['$scope', '$modal',
+    function ($scope, $modal) {
     $scope.createdoc = function () {
       $modal.open({
         templateUrl: 'views/createdoc.html',
@@ -16,12 +17,6 @@ angular.module('steam')
     }
 
   }])
-
-  .filter('reverse', function () {
-    return function(items) {
-      return items.slice().reverse()
-    }
-  })
 
   .controller('commentsCtrl', ['$scope', function ($scope) {}])
 

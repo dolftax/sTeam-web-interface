@@ -22,12 +22,6 @@ angular.module('steam')
     }
   }])
 
-  .filter('trusted', ['$sce', function ($sce) {
-    return function(url) {
-        return $sce.trustAsResourceUrl(url)
-    }
-  }])
-
   .controller('workspaceDetailedCtrl', ['$http', '$scope', 'handler', 'localStorageService', 'PDFViewerService',
    function ($http, $scope, handler, localStorageService, pdf) {
     $scope.dataSrc = localStorageService.get('baseurl') + 'home/' + localStorageService.get('currentObjPath')
