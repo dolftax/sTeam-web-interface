@@ -61,15 +61,5 @@ angular.module('steam')
       $scope.totalPages = totalPages
     }
     $scope.loadProgress = function(loaded, total, state) {
-      console.log('loaded =', loaded, 'total =', total, 'state =', state)
     }
-
-    // Audio
-    // $scope.audio = ngAudio.load($scope.data)
-
-    // Video
-    $scope.interface = {}
-    $scope.$on('$videoReady', function videoReady () {
-      $scope.interface.sources.add($scope.data)
-    })
   }])
