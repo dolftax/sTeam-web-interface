@@ -1,6 +1,6 @@
-<div class="container col-sm-offest-2 col-md-offset-2">
+<div class="container col-sm-offest-1 col-md-offset-1">
 <!-- Unsupported mime type -->
-<div class="col-sm-12 col-md-12" ng-if="mimeTypeHandler() == 'unknown'">
+<div class="col-sm-8 col-md-8" ng-if="mimeTypeHandler() == 'unknown'">
   <div class="alert alert-warning" role="alert">
     <p class="text-center">This document can't be viewed in browser window.</p>
   </div>
@@ -8,7 +8,7 @@
 
 <!-- image/* -->
 <div class="col-sm-12 col-md-12" ng-if="mimeTypeHandler() == 'image'">
-  <img ng-src="{{dataSrc | trusted}}" style="max-width: 500px; max-height: 500px" />
+  <img ng-src="{{source}}" style="max-width: 500px; max-height: 500px" />
 </div>
 
 <!-- application/pdf -->
@@ -29,12 +29,12 @@ er>
 
 <!-- audio/* -->
 <div class="col-sm-12 col-md-12" ng-if="mimeTypeHandler() == 'audio'">
-  <audio ng-src="{{dataSrc | trusted}}" controls=""></audio>
+  <audio ng-src="{{source}}" controls=""></audio>
 </div>
 
 <!-- video/* -->
 <div class="col-sm-12 col-md-12" ng-if="mimeTypeHandler() == 'video'">
-  <video ng-src="{{dataSrc | trusted}}" allowfullscreen controls></video>
+  <video ng-src="{{source}}" allowfullscreen controls></video>
 </div>
 
 <!-- text -->

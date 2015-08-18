@@ -22,12 +22,13 @@ angular.module('steam')
     }
   }])
 
-  .controller('workspaceDetailedCtrl', ['$http', '$scope', 'handler', 'localStorageService', 'PDFViewerService',
-   function ($http, $scope, handler, localStorageService, pdf) {
+  .controller('workspaceDetailedCtrl', ['$http', '$scope', 'handler', 'localStorageService', 'PDFViewerService', '$sce',
+   function ($http, $scope, handler, localStorageService, pdf, $sce) {
     $scope.dataSrc = localStorageService.get('baseurl') + 'home/' + localStorageService.get('currentObjPath')
     handler.get($scope.dataSrc, true).then(function (response) {
       $scope.data = response
     })
+
     $scope.mimeTypeHandler = function () {
       if(localStorageService.get('currentObjMimeType') == 'application/x-unknown-content-type') {
         return 'unknown'
@@ -43,6 +44,9 @@ angular.module('steam')
         return 'text'
       } else { return 'notfound' }
     }
+
+    // Trusting the resource
+    $scope.source = $sce.trustAsResourceUrl($scope.dataSrc)
 
     // Pdf
     $scope.pdfURL = $scope.dataSrc
