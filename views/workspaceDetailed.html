@@ -38,7 +38,7 @@ er>
 </div>
 
 <!-- text -->
-<div class="col-sm-8 col-md-8" ng-if="mimeTypeHandler() == 'text'">
+<div class="col-sm-8 col-md-8" ng-if="mimeTypeHandler() == 'text'" ng-init="txtSrc()">
   <text-angular ng-model="data"></text-angular>
 </div>
 </div>

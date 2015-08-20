@@ -25,9 +25,6 @@ angular.module('steam')
   .controller('workspaceDetailedCtrl', ['$http', '$scope', 'handler', 'localStorageService', 'PDFViewerService', '$sce',
    function ($http, $scope, handler, localStorageService, pdf, $sce) {
     $scope.dataSrc = localStorageService.get('baseurl') + 'home/' + localStorageService.get('currentObjPath')
-    handler.get($scope.dataSrc, true).then(function (response) {
-      $scope.data = response
-    })
 
     $scope.mimeTypeHandler = function () {
       if(localStorageService.get('currentObjMimeType') == 'application/x-unknown-content-type') {
@@ -41,12 +38,19 @@ angular.module('steam')
       } else if (localStorageService.get('currentObjMimeType').match(/video\/*/)) {
         return 'video'
       } else if (localStorageService.get('currentObjMimeType').match(/text\/*/)) {
-        return 'text'
+          return 'text'
       } else { return 'notfound' }
     }
 
     // Trusting the resource
     $scope.source = $sce.trustAsResourceUrl($scope.dataSrc)
+
+    // Text
+    $scope.txtSrc = function() {
+      handler.get($scope.dataSrc, true).then(function (response) {
+        $scope.data = response
+      })
+    }
 
     // Pdf
     $scope.pdfURL = $scope.dataSrc
