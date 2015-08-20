@@ -11,10 +11,12 @@
     <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/textAngular/dist/textAngular.css">
     <link rel="stylesheet" type="text/css" href="styles/spinner.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/sweetalert/dist/sweetalert.css">
     <!-- endbuild -->
 
     <!-- build:js /js/site.js -->
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Angular components -->
     <script text="text/javascript" src="bower_components/ng-pdfviewer/lib/pdf.js"></script>
@@ -55,7 +57,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">sTeam Collaboration Platform</a>
+          <a class="navbar-brand">sTeam Collaboration Platform</a>
         </div>
         <div style="margin: 0.6em 0em 0em 18em" class="nav navbar-nav three-quarters-loader" ng-show="loading"></div>
         <div ng-if="!authStatus.isLoggedOut()">

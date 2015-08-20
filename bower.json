@@ -11,7 +11,8 @@
     "angular-local-storage": "~0.2.2",
     "angular-bootstrap": "~0.13.2",
     "angular-pdf": "~1.0.2",
-    "ng-pdfviewer": "~0.2.1"
+    "ng-pdfviewer": "~0.2.1",
+    "sweetalert": "~1.1.0"
   },
   "private": true,
   "resolutions": {

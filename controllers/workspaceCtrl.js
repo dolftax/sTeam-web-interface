@@ -37,7 +37,9 @@ angular.module('steam')
         return 'audio'
       } else if (localStorageService.get('currentObjMimeType').match(/video\/*/)) {
         return 'video'
-      } else if (localStorageService.get('currentObjMimeType').match(/text\/*/)) {
+      } else if (localStorageService.get('currentObjMimeType').match(/text\/*/) ||
+        localStorageService.get('currentObjMimeType') == 'application/x-javascript' ||
+        localStorageService.get('currentObjMimeType') == 'application/x-pike') {
           return 'text'
       } else { return 'notfound' }
     }

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-3 col-md-3">
       <ol class="breadcrumb">
-        <li ng-repeat="item in navigationTrack | reverse">
+        <li ng-repeat="item in navigationTrack | orderBy:id:reverse">
             <a href="">{{item}}</a>
         </li>
       </ol>

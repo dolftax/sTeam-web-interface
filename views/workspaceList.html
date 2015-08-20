@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-sm-4 col-md-3" ng-repeat="item in items" ng-if="item.class == 'Room' || item.class == 'Document'">
-    <div id="panel" class="panel panel-info" ng-show="item.class == 'Room'" ng-click="invokeObj(item.class, item.path, item.mime_type)">
+    <div id="panel" class="clickable panel panel-info" ng-show="item.class == 'Room'" ng-click="invokeObj(item.class, item.path, item.mime_type)">
       <p class="panel-heading">
         {{item.name}}
       </p>
@@ -11,7 +11,7 @@
         No description found
       </p>
     </div>
-    <div id="panel" class="panel panel-success" ng-show="item.class == 'Document'" ng-click="invokeObj(item.class, item.path, item.mime_type)">
+    <div id="panel" class="clickable panel panel-success" ng-show="item.class == 'Document'" ng-click="invokeObj(item.class, item.path, item.mime_type)">
       <p class="panel-heading">
         {{item.name}}
       </p>

@@ -107,7 +107,7 @@ angular.module('steam')
         },
 
         delete: function (request) {
-          return $http.delete(localStorageService.get('restapi') + request, headers()).then(handleRequest)
+          return $http.delete(localStorageService.get('restapi') + '/home' + request, headers()).then(handleRequest)
         }
       }
     }])

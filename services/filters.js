@@ -1,8 +1,8 @@
 angular.module('steam')
 
   .filter('reverse', function () {
-    return function(items) {
-      return items.slice().reverse()
+    return function(item) {
+      return item.slice().reverse()
     }
   })
 

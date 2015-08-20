@@ -17,11 +17,12 @@ angular.module('steam')
     $scope.delete = function () {
       if (localStorageService.get('currentObjPath') != null) {
         handler.delete('/' + localStorageService.get('currentObjPath')).then(function () {
-          alert('File successfully deleted')
-          $state.go('login')
+          swal('Object deleted successfully')
+          location.href = '/'
+          localStorageService.remove('currentObjPath')
         })
         .catch(function () {
-          alert('Your current section can\'t be deleted')
+          swal('Unable to delete your current selection')
         })
       }
     }
