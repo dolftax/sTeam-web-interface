@@ -6,7 +6,7 @@ require('http').createServer(function (request, response) {
   request.addListener('end', function () {
     fileServer.serve(request, response, function (err, result) {
       if (err) {
-        sys.error('Error serving ' + request.url + ' - ' + err.message)
+        console.error('Error serving ' + request.url + ' - ' + err.message)
         response.writeHead(err.status, err.headers)
         response.end()
       }
