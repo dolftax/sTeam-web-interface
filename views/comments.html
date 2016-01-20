@@ -1,9 +1,10 @@
-<div class="col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1">
+<div class="container">
 <legend class="text-left">Comments</legend>
   <form class="form-horizontal">
     <div class="form-group">
       <div class="col-sm-10">
-        <input class="form-control" type="text" required>
+        <input class="form-control" type="text" required id="searchMe">
+        <span></span>
       </div>
       <div class="col-sm-2">
         <button type="button" class="btn btn-primary" ng-click="">Submit</button>
@@ -11,8 +12,8 @@
       <div>
         <ul id="comments">
           <!-- <li ng-repeat="comment in comments track by $index">
-            <span>{{comment.text}}</span> -->
-          </li>
+            <span>{{comment.text}}</span>
+          </li> -->
         </ul>
       </div>
     </div>

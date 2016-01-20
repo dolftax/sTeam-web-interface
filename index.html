@@ -1,57 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="steam">
-  <head>
-    <title>
-      sTeam Collaboration platform
-    </title>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <!-- build:css /css/site.css -->
-    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/textAngular/dist/textAngular.css">
-    <link rel="stylesheet" type="text/css" href="styles/spinner.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/sweetalert/dist/sweetalert.css">
-    <!-- endbuild -->
+<head>
+  <title>
+    sTeam Collaboration platform
+  </title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <!-- build:css /css/site.css -->
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/textAngular/dist/textAngular.css">
+  <link rel="stylesheet" type="text/css" href="styles/spinner.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/sweetalert/dist/sweetalert.css">
+  <!-- endbuild -->
 
-    <!-- build:js /js/site.js -->
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- build:js /js/site.js -->
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!-- Angular components -->
-    <script text="text/javascript" src="bower_components/ng-pdfviewer/lib/pdf.js"></script>
-    <script text="text/javascript" src="bower_components/ng-pdfviewer/lib/pdf.worker.js"></script>
-    <script text="text/javascript" src="bower_components/ng-pdfviewer/lib/compatibility.js"></script>
-    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-    <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-    <script text="text/javascript" src="bower_components/angular-pdf/dist/angular-pdf.js"></script>
+  <!-- Angular components -->
+  <script text="text/javascript" src="bower_components/ng-pdfviewer/lib/pdf.js"></script>
+  <script text="text/javascript" src="bower_components/ng-pdfviewer/lib/pdf.worker.js"></script>
+  <script text="text/javascript" src="bower_components/ng-pdfviewer/lib/compatibility.js"></script>
+  <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+  <script text="text/javascript" src="bower_components/angular-pdf/dist/angular-pdf.js"></script>
 
-    <script type="text/javascript" src="bower_components/textAngular/dist/textAngular-rangy.min.js"></script>
-    <script type="text/javascript" src="bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
-    <script type="text/javascript" src="bower_components/textAngular/dist/textAngular.min.js"></script>
-    <script type="text/javascript" src="bower_components/ng-pdfviewer/ng-pdfviewer.js"></script>
+  <script type="text/javascript" src="bower_components/textAngular/dist/textAngular-rangy.min.js"></script>
+  <script type="text/javascript" src="bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
+  <script type="text/javascript" src="bower_components/textAngular/dist/textAngular.min.js"></script>
+  <script type="text/javascript" src="bower_components/ng-pdfviewer/ng-pdfviewer.js"></script>
+  <script type="text/javascript" src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="controllers/router.js"></script>
-    <script type="text/javascript" src="config.js"></script>
-    <script type="text/javascript" src="services/filters.js"></script>
-    <script type="text/javascript" src="services/handler.js"></script>
-    <script type="text/javascript" src="controllers/loginCtrl.js"></script>
-    <script type="text/javascript" src="controllers/navCtrl.js"></script>
-    <script type="text/javascript" src="controllers/workspaceCtrl.js"></script>
-    <script type="text/javascript" src="controllers/groupsCtrl.js"></script>
-    <script type="text/javascript" src="controllers/workareaCtrl.js"></script>
-    <!-- endbuild -->
+  <script type="text/javascript" src="controllers/router.js"></script>
+  <script type="text/javascript" src="config.js"></script>
+  <script type="text/javascript" src="services/filters.js"></script>
+  <script type="text/javascript" src="services/handler.js"></script>
+  <script type="text/javascript" src="controllers/loginCtrl.js"></script>
+  <script type="text/javascript" src="controllers/navCtrl.js"></script>
+  <script type="text/javascript" src="controllers/workspaceCtrl.js"></script>
+  <script type="text/javascript" src="controllers/groupsCtrl.js"></script>
+  <script type="text/javascript" src="controllers/workareaCtrl.js"></script>
+  <!-- endbuild -->
 
-  </head>
-  <body>
-    <!-- Navbar -->
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="container">
     <nav class="navbar navbar-default" ng-controller="navCtrl">
       <div class="container-fluid">
         <div class="navbar-header">
-          <button class="navbar-toggle collapsed" data-toggle="collapse" type="button">
+          <button class="navbar-toggle collapsed" data-toggle="collapse" type="button" data-target="#navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -59,22 +61,22 @@
           </button>
           <a class="navbar-brand">sTeam Collaboration Platform</a>
         </div>
-        <div style="margin: 0.6em 0em 0em 18em" class="nav navbar-nav three-quarters-loader" ng-show="loading"></div>
-        <div ng-if="!authStatus.isLoggedOut()">
-          <span style="padding: 0.6em 5em" class="nav navbar-nav navbar-right">
-              <span id="user" style="font-size: 1.2em">Welcome, {{user}}!</span>
-              <button type="button" class="btn btn-danger" ng-click="authStatus.logOut()">Logout</button>
-          </span>
+        <div class="nav navbar-nav three-quarters-loader" ng-show="loading"></div>
+        <div ng-if="!authStatus.isLoggedOut()" id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><span id="user" class="navbar-right" style="padding-top: 10px; padding-right: 10px;">Welcome, {{user}}! <button type="button" class="btn btn-sm btn-danger" ng-click="authStatus.logOut()">Logout</button></span> &nbsp;</li>
+          </ul>
           <form class="navbar-form navbar-right">
             <div class="form-group">
-              <input class="form-control" placeholder="Search" type="text">
+              <input class="form-control" placeholder="Search" type="text" id="searchMe">
             </div>
           </form>
         </div>
       </div>
     </nav>
+  </div>
 
-    <ui-view></ui-view>
+  <ui-view></ui-view>
 
-  </body>
+</body>
 </html>

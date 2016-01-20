@@ -1,17 +1,20 @@
 <!-- Breadcrumb, workarea switch, options -->
+<div class="container">
   <div class="row">
     <div class="col-xs-3 col-md-3">
       <ol class="breadcrumb">
         <li ng-repeat="item in navigationTrack | orderBy:id:reverse">
-            <a href="">{{item}}</a>
+          <a href="">{{item}}</a>
         </li>
       </ol>
     </div>
     <div class="col-xs-3 col-md-3">
-      <tabset justified="true">
-        <tab heading="Private" ui-sref="workarea.list"></tab>
-        <tab heading="Groups" ui-sref="workarea.groups"></tab>
-      </tabset>
+      <ul class="nav nav-tabs">
+        <tabset justified="true">
+          <tab heading="Private" ui-sref="workarea.list"></tab>
+          <tab heading="Groups" ui-sref="workarea.groups"></tab>
+        </tabset>
+      </ul>
     </div>
     <div class="col-xs-3 col-md-3">
       <div ui-view="options"></div>
@@ -33,20 +36,18 @@
             <a href="#" tabindex="-1">Doc type</a>
           </li>
         </ul>&nbsp;
-        <i class="fa fa-chevron-up"></i>
-        <i class="fa fa-chevron-down"></i>
       </div>
     </div>
   </div>
 </div><br>
-  <!-- for loading workspace -->
-  <div class="container">
-    <div ui-view="groupsList"></div>
-    <div ui-view="workspaceList"></div><br>
-    <div ui-view="workspaceDetailed"></div>
-    <hr>
-  </div>
-  <br>
-  <div class="container">
-    <div ui-view="comments"></div>
-  </div>
+<!-- for loading workspace -->
+<div class="container">
+  <div ui-view="groupsList"></div>
+  <div ui-view="workspaceList"></div><br>
+  <div ui-view="workspaceDetailed"></div>
+  <hr>
+</div>
+<br>
+<div class="container">
+  <div ui-view="comments"></div>
+</div>
