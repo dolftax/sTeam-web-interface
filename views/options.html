@@ -1,11 +1,13 @@
-<div class="pull-right column">
-  <i class="clickable fa fa-files-o fa-lg"></i>&nbsp;&nbsp;
-  <i class="clickable fa fa-clipboard fa-lg"></i>&nbsp;&nbsp;
-  <i class="clickable fa fa-cog fa-lg"></i>&nbsp;&nbsp;
-  <i class="clickable fa fa-key fa-lg"></i>&nbsp;&nbsp;
-  <i class="clickable fa fa-link fa-lg"></i>&nbsp;&nbsp;
-  <i class="clickable fa fa-trash-o fa-lg" ng-click="delete()"></i>&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <i class="clickable fa fa-plus fa-lg" ng-click="createdoc()"></i>&nbsp;&nbsp;
-  <i class="clickable fa fa-folder fa-lg" ng-click="createroom()"></i>
+<div class="dropdown pull-right">
+	<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1" type="button">Options<span class="caret"></span></button>
+	<ul class="dropdown-menu">
+		<li><a href="#">option 1 <i class="clickable fa fa-files-o fa-lg"></i></a></li>
+		<li><a href="#">option 2 <i class="clickable fa fa-clipboard fa-lg"></i></a></li>
+		<li><a href="#">option 3 <i class="clickable fa fa-cog fa-lg"></i></a></li>
+		<li><a href="#">option 4 <i class="clickable fa fa-key fa-lg"></i></a></li>
+		<li><a href="#">option 5 <i class="clickable fa fa-link fa-lg"></i></a></li></li>
+		<li><a href="#">Delete <i class="clickable fa fa-trash-o fa-lg" ng-click="delete()"></i></a></li>
+		<li><a href="#">Create Doc <i class="clickable fa fa-plus fa-lg" ng-click="createdoc()"></i></a></li>
+		<li><a href="#">Create Room <i class="clickable fa fa-folder fa-lg" ng-click="createroom()"></i></a></li>
+	</ul>
 </div>
