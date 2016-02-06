@@ -17,20 +17,20 @@
           <input name="regular" class="form-control" placeholder="Seperate keywords by comma" type="text">
         </div>
       </div><br>
-      <div class="btn-group col-md-offset-3 col-sm-5" dropdown>
-        <button class="btn btn-info dropdown-toggle" dropdown-toggle>Permission type
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="#">Shared</a></li>
-          <li><a href="#">Private</a></li>
-        </ul>
+      <div class="form-group">
+        <div class="btn-group col-md-offset-3 col-sm-5" dropdown>
+        <select class="form-control" id="select">
+            <option>Permission Type</option>
+            <option>Shared</option>
+            <option>Private</option>
+          </select>
+      </div>
       </div>
     </form>
   </div>
 </div>
 
 <div class="modal-footer">
-  <button class="btn btn-primary" ng-click="createdoc()">Create room</button>
+  <button class="btn btn-primary" ng-click="createroom()">Create room</button>
   <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 </div>

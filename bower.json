@@ -12,6 +12,7 @@
     "angular-bootstrap": "~0.13.2",
     "angular-pdf": "~1.0.2",
     "ng-pdfviewer": "~0.2.1",
+    "ng-dialog": "0.5.6",
     "sweetalert": "~1.1.0"
   },
   "private": true,
